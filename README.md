@@ -23,7 +23,5 @@
    ```bash
    - pip install sentence-transformers
    - py -m pip install sentence-transformers
-and
-   ```bash
    - pip install numpy
    - py -m pip install numpy
