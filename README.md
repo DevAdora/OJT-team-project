@@ -26,3 +26,4 @@
    - py -m pip install sentence-transformers
    - pip install numpy
    - py -m pip install numpy
+   - py -m pip install rich
