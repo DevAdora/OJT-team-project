@@ -1,0 +1,36 @@
+packaged fruit/vegetables
+frozen fruits
+pip fruit
+root vegetables
+other vegetables
+citrus fruit
+tropical fruit
+berries
+onions
+pot plants
+specialty vegetables
+flower (seeds)
+Avocado
+Banana
+Apple
+Pear
+Kiwi fruit
+Mango
+Pineapple
+Pomegranate
+Blueberries
+Strawberries
+Raspberries
+Blackberries
+Cranberries
+Pitted dates
+Figs
+Apricots
+Peaches
+Plums
+Nectarines
+Cherries
+Persimmons
+Baby carrots
+Cherry tomatoes
+Cucumber

@@ -1,0 +1,267 @@
+packaged fruit/vegetables
+flower soil/fertilizer
+cooking chocolate
+ready soups
+meat spreads
+frozen fruits
+beef
+shopping bags
+soap
+UHT-milk
+ham
+cat food
+frozen dessert
+hygiene articles
+syrup
+make up remover
+cling film/bags
+pip fruit
+root vegetables
+other vegetables
+citrus fruit
+white bread
+dog food
+frozen vegetables
+napkins
+jam
+hamburger meat
+canned fruit
+specialty fat
+oil
+herbs
+light bulbs
+kitchen utensil
+specialty cheese
+cake bar
+seasonal products
+cleaner
+bathroom cleaner
+chocolate marshmallow
+frozen chicken
+instant coffee
+pudding powder
+artif. sweetener
+house keeping products
+chocolate
+pasta
+pork
+bags
+baking powder
+tropical fruit
+frozen potato products
+candy
+candles
+dessert
+softener
+whipped/sour cream
+bottled beer
+sweet spreads
+frozen meals
+potato products
+frankfurter
+salty snack
+finished products
+canned beer
+Instant food products
+soft cheese
+pastry
+berries
+onions
+cream cheese 
+soda
+flour
+curd
+nuts/prunes
+skin care
+photo/film
+spread cheese
+cereals
+preservation products
+canned fish
+yogurt
+misc. beverages
+hard cheese
+pot plants
+snack products
+organic sausage
+mayonnaise
+kitchen towels
+liquor (appetizer)
+hair spray
+specialty vegetables
+salad dressing
+processed cheese
+male cosmetics
+condensed milk
+zwieback
+soups
+nut snack
+pickled vegetables
+chicken
+spices
+flower (seeds)
+rice
+beverages
+semi-finished bread
+sugar
+liquor
+turkey
+dish cleaner
+sliced cheese
+whisky
+specialty chocolate
+canned vegetables
+brandy
+sparkling wine
+pet care
+newspapers
+organic products
+bottled water
+white wine
+vinegar
+female sanitary products
+domestic eggs
+prosecco
+tidbits
+popcorn
+decalcifier
+salt
+liver loaf
+coffee
+detergent
+rolls/buns
+tea
+liqueur
+sauces
+roll products 
+cookware
+curd cheese
+frozen fish
+dishes
+abrasive cleaner
+ketchup
+specialty bar
+baby cosmetics
+mustard
+honey
+brown bread
+butter milk
+butter
+waffles
+cocoa drinks
+grapes
+chewing gum
+margarine
+sausage
+rubbing alcohol
+dental care
+toilet cleaner
+fish
+cream
+whole milk
+ice cream
+rum
+red/blush wine
+long life bakery product
+fruit/vegetable juice
+meat
+Avocado
+Banana
+Apple
+Pear
+Kiwi fruit
+Mango
+Pineapple
+Pomegranate
+Blueberries
+Strawberries
+Raspberries
+Blackberries
+Cranberries
+Pitted dates
+Figs
+Apricots
+Peaches
+Plums
+Nectarines
+Cherries
+Persimmons
+Quinoa
+Bulgur wheat
+Couscous
+Barley
+Rolled oats
+Granola
+Muesli
+Almonds
+Cashews
+Walnuts
+Pecans
+Hazelnuts
+Pumpkin seeds
+Sunflower seeds
+Chia seeds
+Coconut water
+Almond milk
+Oat milk
+Soy milk
+Hazelnut milk
+Protein powder
+Energy drink
+Kombucha
+Iced tea
+Sparkling water
+Mineral water
+Lemonade
+Apple cider
+Hard cider
+Protein bars
+Energy bars
+Pita bread
+Bagels
+Ciabatta bread
+Baguette
+Sourdough bread
+Focaccia
+Croissants
+Danish pastries
+Muffins
+Donuts
+Biscotti
+Crackers
+Pretzels
+Pop-Tarts
+Rice cakes
+Corn tortillas
+Flour tortillas
+Naan
+Ramen noodles
+Soba noodles
+Udon noodles
+Rice noodles
+Quinoa pasta
+Gnocchi
+Marinara sauce
+Alfredo sauce
+Pesto
+Tapenade
+Guacamole
+Hummus
+Salsa verde
+Chili sauce
+BBQ sauce
+Teriyaki sauce
+Soy sauce
+Balsamic vinegar
+Sesame oil
+Hot sauce
+Relish
+Pickles
+Olives
+Capers
+Sun-dried tomatoes
+Artichoke hearts
+Roasted red peppers
+Baby carrots
+Cherry tomatoes
+Cucumber
