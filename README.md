@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿# OJT-Team-Project
 
 **OJT-Team-Project** is a collaborative project developed by a team of developers as part of an on-the-job training (OJT) program. The project utilizes Python and is designed as a Command Line Interface (CLI) application. This repo serves as a platform for hands-on learning, team collaboration, and building practical skills in software development.
@@ -25,3 +26,16 @@
    - py -m pip install sentence-transformers
    - pip install numpy
    - py -m pip install numpy
+=======
+##Install Sentence Transformers
+- pip install sentence-transformers
+- py -m pip install sentence-transformers
+
+#Install Numpy
+- pip install numpy
+- py -m pip install numpy
+
+#Install Rich
+- pip install rich
+- py -m pip install rich
+>>>>>>> feature/user
