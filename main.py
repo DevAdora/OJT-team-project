@@ -3,6 +3,7 @@ import datetime
 import os
 from chatbot import GroceryStoreRecommender
 from shopping import ShoppingCart
+from shop import Shop
 
 def recommendation_system(cart):
     recommender = GroceryStoreRecommender()
@@ -21,7 +22,7 @@ def recommendation_system(cart):
             print("Recommended items:")
             for idx, item in enumerate(recommended_items, 1):
                 print(f"[{idx}] - {item}")
-            choice = input("Enter the number of the item to add to cart, type 'new' for a new recommendation, or 'done' to finish: ")
+            choice = input("[new] - New Recommendation\n\nEnter the number of the item to add to cart, type 'new' for a new recommendation, or 'done' to finish: ")
             if choice.lower() == 'new':
                 break
             elif choice.lower() == 'done':
@@ -35,38 +36,35 @@ def recommendation_system(cart):
             else:
                 print("Invalid choice. Please try again.")
 
-def shop(cart):
-    while True:
-        recommendation_system(cart)
-
 def user_menu(username):
     cart = ShoppingCart()
     receipt_filename = create_receipt_file(username)
+    shop_instance = Shop(cart)
     while True:
         print("\nMain Menu:")
-        print("1. Recommendation System")
-        print("2. Shop")
-        print("3. Cart")
-        print("4. Checkout")
-        print("5. Exit")
+        print("[1] Recommendation System")
+        print("[2] Shop")
+        print("[3] Cart")
+        print("[4] Checkout")
+        print("[5] Exit")
         choice = input("Enter your choice: ")
 
         if choice == '1':
             recommendation_system(cart)
         elif choice == '2':
-            shop(cart)
+            shop_instance.shop()
         elif choice == '3':
             cart.view_cart()
         elif choice == '4':
             cart.checkout(receipt_filename)
+            break
         elif choice == '5':
             print("Exiting the program. Goodbye!")
-            if not cart.cart:
-                with open(receipt_filename, 'r') as f:
-                    content = f.read()
-                    if "Items purchased:" not in content:
-                        os.remove(receipt_filename)
-                        print(f"Receipt file {receipt_filename} did not contain 'Items purchased:' and was deleted.")
+            with open(receipt_filename, 'r') as f:
+                content = f.read()
+            if "Items purchased:" not in content:
+                os.remove(receipt_filename)
+                print(f"Receipt file {receipt_filename} did not contain 'Items purchased:' and was deleted.")
             break
         else:
             print("Invalid choice. Please try again.")
@@ -91,9 +89,9 @@ def create_receipt_file(username):
 def login():
     while True:
         print("\nLogin Menu:")
-        print("1. User Login")
-        print("2. Admin Login")
-        print("3. Exit")
+        print("[1] - User Login")
+        print("[2] - Admin Login")
+        print("[3] - Exit")
         choice = input("Enter your choice: ")
 
         if choice == '1':
