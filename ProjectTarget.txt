@@ -1,0 +1,55 @@
++++++++++++++++++++++++
+
+Project: FreshInsights
+
++++++++++++++++++++++++
+
+
+For: User
+---------
+-Login
+>User (Purchase interface)
+>Admin (Purchase List, Available items on sale)
+
+-Options Menu
+>Recommendation System
+>Shop
+>Cart (if there are items)
+>Checkout (if there are items)
+>Exit
+
+-Recommendation System
+>Chatbot (currently: Recommendations only)
+>Add to cart (save to {username}.{date}.{increment}.receipt.txt based on selection that carries over unless purchase complete or delete purchase)
+>Modify cart (remove items or edit quantity)
+>Check-out link (Pay)
+>Exit (carries over the receipt)
+
+-Shop
+>Categories
+->Specific items available for purchase (tuple)
+->Add to cart (save to {username}.{date}.{increment}.receipt.txt based on selection that carries over unless purchase complete or delete purchase)
+->Check-out link (Pay)
+->Exit (carries over the receipt)
+
+-Check-out
+>Pay
+
+For: Admin
+----------
+-Login
+>User (Purchase interface)
+>Admin (Purchase List, Available items on sale)
+
+-Options Menu
+>Purchase List (show all files in the purchases folder)
+>Available items on sale
+->View (category)
+->Add (category)
+->Update (category)
+->Delete (category)
+-------------
+Day 1:
+Main: Menu
+Class: Chatbot
+
