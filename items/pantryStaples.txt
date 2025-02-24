@@ -1,65 +1,65 @@
-cooking chocolate
-ready soups
-jam
-canned fruit
-specialty fat
-oil
-herbs
-baking powder
-flour
-cereals
-preservation products
-canned fish
-mayonnaise
-rice
-sugar
-salt
-sauces
-curd cheese
-pudding powder
-artif. sweetener
-pasta
-instant coffee
-instant food products
-spices
-mustard
-honey
-cocoa drinks
-granola
-muesli
-almonds
-cashews
-walnuts
-pecans
-hazelnuts
-pumpkin seeds
-sunflower seeds
-chia seeds
-quinoa
-bulgur wheat
-couscous
-barley
-rolled oats
-quinoa pasta
-gnocchi
-marinara sauce
-alfredo sauce
-pesto
-tapenade
-guacamole
-hummus
-salsa verde
-chili sauce
-bbq sauce
-teriyaki sauce
-soy sauce
-balsamic vinegar
-sesame oil
-hot sauce
-relish
-pickles
-olives
-capers
-sun-dried tomatoes
-artichoke hearts
-roasted red peppers
+cooking chocolate, 15
+ready soups, 10
+jam, 8
+canned fruit, 12
+specialty fat, 20
+oil, 15
+herbs, 5
+baking powder, 4
+flour, 6
+cereals, 10
+preservation products, 8
+canned fish, 15
+mayonnaise, 10
+rice, 12
+sugar, 5
+salt, 3
+sauces, 8
+curd cheese, 10
+pudding powder, 5
+artif. sweetener, 6
+pasta, 10
+instant coffee, 15
+instant food products, 12
+spices, 8
+mustard, 6
+honey, 10
+cocoa drinks, 12
+granola, 15
+muesli, 12
+almonds, 20
+cashews, 18
+walnuts, 22
+pecans, 25
+hazelnuts, 20
+pumpkin seeds, 10
+sunflower seeds, 8
+chia seeds, 12
+quinoa, 15
+bulgur wheat, 10
+couscous, 10
+barley, 8
+rolled oats, 6
+quinoa pasta, 15
+gnocchi, 12
+marinara sauce, 10
+alfredo sauce, 10
+pesto, 12
+tapenade, 15
+guacamole, 12
+hummus, 10
+salsa verde, 8
+chili sauce, 6
+bbq sauce, 8
+teriyaki sauce, 10
+soy sauce, 5
+balsamic vinegar, 12
+sesame oil, 15
+hot sauce, 6
+relish, 8
+pickles, 10
+olives, 12
+capers, 15
+sun-dried tomatoes, 18
+artichoke hearts, 20
+roasted red peppers, 18

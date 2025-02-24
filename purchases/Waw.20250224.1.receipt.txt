@@ -1,5 +1,5 @@
 Receipt for Waw on 20250224
 Items purchased:
-- frozen fish
-- frozen chicken
-- frozen dessert
+- frozen fish, 45
+- frozen chicken, 40
+- frozen dessert, 30

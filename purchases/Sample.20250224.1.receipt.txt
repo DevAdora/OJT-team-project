@@ -1,5 +1,5 @@
 Receipt for Sample on 20250224
 Items purchased:
-- detergent
-- soap
-- cleaner
+- detergent, 20
+- soap, 5
+- cleaner, 15

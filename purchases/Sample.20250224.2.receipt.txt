@@ -1,5 +1,5 @@
 Receipt for Sample on 20250224
 Items purchased:
-- potato products
-- berries
-- other vegetables
+- potato products, 20
+- berries, 30
+- other vegetables, 20

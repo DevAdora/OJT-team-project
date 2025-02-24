@@ -1,8 +1,8 @@
 Receipt for Rey on 20250224
 Items purchased:
-- dessert
-- tidbits
-- popcorn
-- cake bar
-- flour tortillas
-- naan
+- dessert, 20
+- tidbits, 15
+- popcorn, 10
+- cake bar, 10
+- flour tortillas, 20
+- naan, 22

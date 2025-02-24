@@ -1,16 +1,16 @@
-UHT-milk
-whipped/sour cream
-cream cheese 
-curd
-yogurt
-hard cheese
-spread cheese
-soft cheese
-sliced cheese
-processed cheese
-condensed milk
-butter milk
-butter
-cream
-whole milk
-domestic eggs
+UHT-milk, 15
+whipped/sour cream, 20
+cream cheese, 25
+curd, 18
+yogurt, 12
+hard cheese, 30
+spread cheese, 22
+soft cheese, 28
+sliced cheese, 25
+processed cheese, 20
+condensed milk, 18
+butter milk, 15
+butter, 25
+cream, 20
+whole milk, 15
+domestic eggs, 10

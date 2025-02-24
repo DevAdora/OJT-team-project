@@ -1,16 +1,16 @@
-shopping bags
-cling film/bags
-light bulbs
-kitchen utensil
-seasonal products
-cleaner
-bathroom cleaner
-house keeping products
-kitchen towels
-dish cleaner
-abrasive cleaner
-toilet cleaner
-dishes
-cookware
-decalcifier
-detergent
+shopping bags, 5
+cling film/bags, 10
+light bulbs, 15
+kitchen utensil, 20
+seasonal products, 25
+cleaner, 15
+bathroom cleaner, 18
+house keeping products, 20
+kitchen towels, 12
+dish cleaner, 15
+abrasive cleaner, 18
+toilet cleaner, 20
+dishes, 25
+cookware, 30
+decalcifier, 15
+detergent, 20
