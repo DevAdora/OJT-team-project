@@ -5,3 +5,7 @@
 #Install Numpy
 - pip install numpy
 - py -m pip install numpy
+
+#Install Rich
+- pip install rich
+- py -m pip install rich

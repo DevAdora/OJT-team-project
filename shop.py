@@ -1,9 +1,12 @@
 import os
+from rich.table import Table
+from rich.console import Console
 
 class Shop:
     def __init__(self, cart):
         self.cart = cart
         self.categories = self.load_categories()
+        self.console = Console()
 
     def load_categories(self):
         categories = []
@@ -16,18 +19,24 @@ class Shop:
         return categories
 
     def display_categories(self):
-        print("\nCategories:")
-        print("[0] - Exit")
+        table = Table(title="Categories")
+        table.add_column("Index", justify="center", style="cyan", no_wrap=True)
+        table.add_column("Category", justify="left", style="magenta")
+        table.add_row("[0]", "Exit")
         for idx, (_, category_name) in enumerate(self.categories, 1):
-            print(f"[{idx}] - {category_name}")
+            table.add_row(str(idx), category_name)
+        self.console.print(table)
 
     def display_products(self, category_filename):
         with open(f'items/{category_filename}', 'r') as f:
             products = f.readlines()
-        print("\nProducts:")
-        print("[0] - Exit")
+        table = Table(title="Products")
+        table.add_column("Index", justify="center", style="cyan", no_wrap=True)
+        table.add_column("Product", justify="left", style="magenta")
+        table.add_row("0", "Exit")
         for idx, product in enumerate(products, 1):
-            print(f"[{idx}] - {product.strip()}")
+            table.add_row(str(idx), product.strip())
+        self.console.print(table)
         return products
 
     def shop(self):
@@ -47,6 +56,6 @@ class Shop:
                         selected_product = products[int(product_choice) - 1].strip()
                         self.cart.add_to_cart(selected_product)
                     else:
-                        print("Invalid choice. Please try again.")
+                        self.console.print("Invalid choice. Please try again.", style="bold red")
             else:
-                print("Invalid choice. Please try again.")
+                self.console.print("Invalid choice. Please try again.", style="bold red")
