@@ -1,0 +1,5 @@
+Receipt for purchases/Sample on 20250224
+Items purchased:
+- potato products
+- berries
+- other vegetables

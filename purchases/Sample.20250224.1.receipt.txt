@@ -1,0 +1,5 @@
+Receipt for Sample on 20250224
+Items purchased:
+- detergent
+- soap
+- cleaner

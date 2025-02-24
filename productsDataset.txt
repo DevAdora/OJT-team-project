@@ -265,3 +265,37 @@ Roasted red peppers
 Baby carrots
 Cherry tomatoes
 Cucumber
+
+pita bread
+bagels
+ciabatta bread
+baguette
+sourdough bread
+focaccia
+croissants
+danish pastries
+muffins
+donuts
+biscotti
+crackers
+pretzels
+pop-tarts
+rice cakes
+corn tortillas
+flour tortillas
+naan
+
+coconut water
+almond milk
+oat milk
+soy milk
+hazelnut milk
+protein powder
+energy drink
+kombucha
+iced tea
+sparkling water
+mineral water
+lemonade
+apple cider
+hard cider
