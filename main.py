@@ -10,6 +10,8 @@ def recommendation_system(cart):
     while True:
         user_query = input("Enter some products you want to buy (type 'exit' to quit): ")
         if user_query.lower() == 'exit':
+            for item in selected_items:
+                cart.add_to_cart(item)
             return
         recommended_items = recommender.recommendItems(user_query)
         if len(recommended_items) < 1:
@@ -56,11 +58,15 @@ def user_menu(username):
         elif choice == '3':
             cart.view_cart()
         elif choice == '4':
-            cart.checkout()
+            cart.checkout(receipt_filename)
         elif choice == '5':
             print("Exiting the program. Goodbye!")
             if not cart.cart:
-                os.remove(receipt_filename)
+                with open(receipt_filename, 'r') as f:
+                    content = f.read()
+                    if "Items purchased:" not in content:
+                        os.remove(receipt_filename)
+                        print(f"Receipt file {receipt_filename} did not contain 'Items purchased:' and was deleted.")
             break
         else:
             print("Invalid choice. Please try again.")
