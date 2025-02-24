@@ -1,36 +1,36 @@
-packaged fruit/vegetables
-frozen fruits
-pip fruit
-root vegetables
-other vegetables
-citrus fruit
-tropical fruit
-berries
-onions
-pot plants
-specialty vegetables
-flower (seeds)
-Avocado
-Banana
-Apple
-Pear
-Kiwi fruit
-Mango
-Pineapple
-Pomegranate
-Blueberries
-Strawberries
-Raspberries
-Blackberries
-Cranberries
-Pitted dates
-Figs
-Apricots
-Peaches
-Plums
-Nectarines
-Cherries
-Persimmons
-Baby carrots
-Cherry tomatoes
-Cucumber
+packaged fruit/vegetables, 20
+frozen fruits, 25
+pip fruit, 15
+root vegetables, 18
+other vegetables, 20
+citrus fruit, 22
+tropical fruit, 25
+berries, 30
+onions, 10
+pot plants, 35
+specialty vegetables, 28
+flower (seeds), 15
+Avocado, 20
+Banana, 10
+Apple, 12
+Pear, 15
+Kiwi fruit, 18
+Mango, 20
+Pineapple, 25
+Pomegranate, 30
+Blueberries, 35
+Strawberries, 30
+Raspberries, 35
+Blackberries, 35
+Cranberries, 30
+Pitted dates, 25
+Figs, 28
+Apricots, 22
+Peaches, 25
+Plums, 20
+Nectarines, 22
+Cherries, 30
+Persimmons, 28
+Baby carrots, 15
+Cherry tomatoes, 18
+Cucumber, 12

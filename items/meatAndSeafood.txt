@@ -1,10 +1,10 @@
-meat spreads
-beef
-hamburger meat
-pork
-frankfurter
-chicken
-turkey
-sausage
-fish
-meat
+meat spreads, 25
+beef, 50
+hamburger meat, 40
+pork, 45
+frankfurter, 30
+chicken, 35
+turkey, 40
+sausage, 30
+fish, 50
+meat, 45

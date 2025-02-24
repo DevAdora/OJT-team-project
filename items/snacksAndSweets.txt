@@ -1,16 +1,16 @@
-chocolate
-cake bar
-chocolate marshmallow
-candy
-dessert
-sweet spreads
-salty snack
-snack products
-specialty chocolate
-tidbits
-popcorn
-chewing gum
-waffles
-ice cream
-protein bars
-energy bars
+chocolate, 15
+cake bar, 10
+chocolate marshmallow, 12
+candy, 8
+dessert, 20
+sweet spreads, 18
+salty snack, 10
+snack products, 12
+specialty chocolate, 25
+tidbits, 15
+popcorn, 10
+chewing gum, 5
+waffles, 12
+ice cream, 20
+protein bars, 25
+energy bars, 20

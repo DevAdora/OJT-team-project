@@ -1,10 +1,10 @@
-cat food
-dog food
-napkins
-specialty cheese
-pot plants
-organic sausage
-organic products
-pet care
-newspapers
-tidbits
+cat food, 20
+dog food, 25
+napkins, 10
+specialty cheese, 30
+pot plants, 35
+organic sausage, 40
+organic products, 30
+pet care, 20
+newspapers, 5
+tidbits, 15

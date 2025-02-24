@@ -1,267 +1,239 @@
-packaged fruit/vegetables
-flower soil/fertilizer
-cooking chocolate
-ready soups
-meat spreads
-frozen fruits
-beef
-shopping bags
-soap
-UHT-milk
-ham
-cat food
-frozen dessert
-hygiene articles
-syrup
-make up remover
-cling film/bags
-pip fruit
-root vegetables
-other vegetables
-citrus fruit
-white bread
-dog food
-frozen vegetables
-napkins
-jam
-hamburger meat
-canned fruit
-specialty fat
-oil
-herbs
-light bulbs
-kitchen utensil
-specialty cheese
-cake bar
-seasonal products
-cleaner
-bathroom cleaner
-chocolate marshmallow
-frozen chicken
-instant coffee
-pudding powder
-artif. sweetener
-house keeping products
-chocolate
-pasta
-pork
-bags
-baking powder
-tropical fruit
-frozen potato products
-candy
-candles
-dessert
-softener
-whipped/sour cream
-bottled beer
-sweet spreads
-frozen meals
-potato products
-frankfurter
-salty snack
-finished products
-canned beer
-Instant food products
-soft cheese
-pastry
-berries
-onions
-cream cheese 
-soda
-flour
-curd
-nuts/prunes
-skin care
-photo/film
-spread cheese
-cereals
-preservation products
-canned fish
-yogurt
-misc. beverages
-hard cheese
-pot plants
-snack products
-organic sausage
-mayonnaise
-kitchen towels
-liquor (appetizer)
-hair spray
-specialty vegetables
-salad dressing
-processed cheese
-male cosmetics
-condensed milk
-zwieback
-soups
-nut snack
-pickled vegetables
-chicken
-spices
-flower (seeds)
-rice
-beverages
-semi-finished bread
-sugar
-liquor
-turkey
-dish cleaner
-sliced cheese
-whisky
-specialty chocolate
-canned vegetables
-brandy
-sparkling wine
-pet care
-newspapers
-organic products
-bottled water
-white wine
-vinegar
-female sanitary products
-domestic eggs
-prosecco
-tidbits
-popcorn
-decalcifier
-salt
-liver loaf
-coffee
-detergent
-rolls/buns
-tea
-liqueur
-sauces
-roll products 
-cookware
-curd cheese
-frozen fish
-dishes
-abrasive cleaner
-ketchup
-specialty bar
-baby cosmetics
-mustard
-honey
-brown bread
-butter milk
-butter
-waffles
-cocoa drinks
-grapes
-chewing gum
-margarine
-sausage
-rubbing alcohol
-dental care
-toilet cleaner
-fish
-cream
-whole milk
-ice cream
-rum
-red/blush wine
-long life bakery product
-fruit/vegetable juice
-meat
-Avocado
-Banana
-Apple
-Pear
-Kiwi fruit
-Mango
-Pineapple
-Pomegranate
-Blueberries
-Strawberries
-Raspberries
-Blackberries
-Cranberries
-Pitted dates
-Figs
-Apricots
-Peaches
-Plums
-Nectarines
-Cherries
-Persimmons
-Quinoa
-Bulgur wheat
-Couscous
-Barley
-Rolled oats
-Granola
-Muesli
-Almonds
-Cashews
-Walnuts
-Pecans
-Hazelnuts
-Pumpkin seeds
-Sunflower seeds
-Chia seeds
-Coconut water
-Almond milk
-Oat milk
-Soy milk
-Hazelnut milk
-Protein powder
-Energy drink
-Kombucha
-Iced tea
-Sparkling water
-Mineral water
-Lemonade
-Apple cider
-Hard cider
-Protein bars
-Energy bars
-Pita bread
-Bagels
-Ciabatta bread
-Baguette
-Sourdough bread
-Focaccia
-Croissants
-Danish pastries
-Muffins
-Donuts
-Biscotti
-Crackers
-Pretzels
-Pop-Tarts
-Rice cakes
-Corn tortillas
-Flour tortillas
-Naan
-Ramen noodles
-Soba noodles
-Udon noodles
-Rice noodles
-Quinoa pasta
-Gnocchi
-Marinara sauce
-Alfredo sauce
-Pesto
-Tapenade
-Guacamole
-Hummus
-Salsa verde
-Chili sauce
-BBQ sauce
-Teriyaki sauce
-Soy sauce
-Balsamic vinegar
-Sesame oil
-Hot sauce
-Relish
-Pickles
-Olives
-Capers
-Sun-dried tomatoes
-Artichoke hearts
-Roasted red peppers
-Baby carrots
-Cherry tomatoes
-Cucumber
+white bread, 20
+brown bread, 25
+rolls/buns, 15
+roll products, 18
+semi-finished bread, 22
+long life bakery product, 30
+pita bread, 20
+bagels, 25
+ciabatta bread, 28
+baguette, 22
+sourdough bread, 35
+focaccia, 30
+croissants, 25
+danish pastries, 28
+muffins, 20
+donuts, 18
+biscotti, 22
+crackers, 15
+pretzels, 18
+pop-tarts, 25
+rice cakes, 20
+corn tortillas, 18
+flour tortillas, 20
+naan, 22
+soda, 10
+misc. beverages, 15
+liquor (appetizer), 50
+liquor, 45
+whisky, 60
+brandy, 55
+sparkling wine, 40
+white wine, 35
+prosecco, 38
+coffee, 20
+tea, 15
+liqueur, 50
+rum, 45
+red/blush wine, 35
+fruit/vegetable juice, 25
+coconut water, 30
+almond milk, 25
+oat milk, 25
+soy milk, 25
+hazelnut milk, 30
+protein powder, 50
+energy drink, 20
+kombucha, 25
+iced tea, 15
+sparkling water, 10
+mineral water, 10
+lemonade, 15
+apple cider, 20
+hard cider, 25
+UHT-milk, 15
+whipped/sour cream, 20
+cream cheese, 25
+curd, 18
+yogurt, 12
+hard cheese, 30
+spread cheese, 22
+soft cheese, 28
+sliced cheese, 25
+processed cheese, 20
+condensed milk, 18
+butter milk, 15
+butter, 25
+cream, 20
+whole milk, 15
+domestic eggs, 10
+frozen dessert, 30
+frozen vegetables, 25
+frozen chicken, 40
+frozen potato products, 20
+frozen meals, 35
+frozen fish, 45
+packaged fruit/vegetables, 20
+frozen fruits, 25
+pip fruit, 15
+root vegetables, 18
+other vegetables, 20
+citrus fruit, 22
+tropical fruit, 25
+berries, 30
+onions, 10
+pot plants, 35
+specialty vegetables, 28
+flower (seeds), 15
+Avocado, 20
+Banana, 10
+Apple, 12
+Pear, 15
+Kiwi fruit, 18
+Mango, 20
+Pineapple, 25
+Pomegranate, 30
+Blueberries, 35
+Strawberries, 30
+Raspberries, 35
+Blackberries, 35
+Cranberries, 30
+Pitted dates, 25
+Figs, 28
+Apricots, 22
+Peaches, 25
+Plums, 20
+Nectarines, 22
+Cherries, 30
+Persimmons, 28
+Baby carrots, 15
+Cherry tomatoes, 18
+Cucumber, 12
+shopping bags, 5
+cling film/bags, 10
+light bulbs, 15
+kitchen utensil, 20
+seasonal products, 25
+cleaner, 15
+bathroom cleaner, 18
+house keeping products, 20
+kitchen towels, 12
+dish cleaner, 15
+abrasive cleaner, 18
+toilet cleaner, 20
+dishes, 25
+cookware, 30
+decalcifier, 15
+detergent, 20
+meat spreads, 25
+beef, 50
+hamburger meat, 40
+pork, 45
+frankfurter, 30
+chicken, 35
+turkey, 40
+sausage, 30
+fish, 50
+meat, 45
+cat food, 20
+dog food, 25
+napkins, 10
+specialty cheese, 30
+pot plants, 35
+organic sausage, 40
+organic products, 30
+pet care, 20
+newspapers, 5
+tidbits, 15
+cooking chocolate, 15
+ready soups, 10
+jam, 8
+canned fruit, 12
+specialty fat, 20
+oil, 15
+herbs, 5
+baking powder, 4
+flour, 6
+cereals, 10
+preservation products, 8
+canned fish, 15
+mayonnaise, 10
+rice, 12
+sugar, 5
+salt, 3
+sauces, 8
+curd cheese, 10
+pudding powder, 5
+artif. sweetener, 6
+pasta, 10
+instant coffee, 15
+instant food products, 12
+spices, 8
+mustard, 6
+honey, 10
+cocoa drinks, 12
+granola, 15
+muesli, 12
+almonds, 20
+cashews, 18
+walnuts, 22
+pecans, 25
+hazelnuts, 20
+pumpkin seeds, 10
+sunflower seeds, 8
+chia seeds, 12
+quinoa, 15
+bulgur wheat, 10
+couscous, 10
+barley, 8
+rolled oats, 6
+quinoa pasta, 15
+gnocchi, 12
+marinara sauce, 10
+alfredo sauce, 10
+pesto, 12
+tapenade, 15
+guacamole, 12
+hummus, 10
+salsa verde, 8
+chili sauce, 6
+bbq sauce, 8
+teriyaki sauce, 10
+soy sauce, 5
+balsamic vinegar, 12
+sesame oil, 15
+hot sauce, 6
+relish, 8
+pickles, 10
+olives, 12
+capers, 15
+sun-dried tomatoes, 18
+artichoke hearts, 20
+roasted red peppers, 18
+soap, 5
+hygiene articles, 10
+make up remover, 15
+skin care, 20
+photo/film, 25
+hair spray, 12
+male cosmetics, 18
+female sanitary products, 15
+baby cosmetics, 20
+dental care, 10
+rubbing alcohol, 8
+chocolate, 15
+cake bar, 10
+chocolate marshmallow, 12
+candy, 8
+dessert, 20
+sweet spreads, 18
+salty snack, 10
+snack products, 12
+specialty chocolate, 25
+tidbits, 15
+popcorn, 10
+chewing gum, 5
+waffles, 12
+ice cream, 20
+protein bars, 25
+energy bars, 20

@@ -1,24 +1,24 @@
-white bread
-brown bread
-rolls/buns
-roll products 
-semi-finished bread
-long life bakery product
-pita bread
-bagels
-ciabatta bread
-baguette
-sourdough bread
-focaccia
-croissants
-danish pastries
-muffins
-donuts
-biscotti
-crackers
-pretzels
-pop-tarts
-rice cakes
-corn tortillas
-flour tortillas
-naan
+white bread, 20
+brown bread, 25
+rolls/buns, 15
+roll products, 18
+semi-finished bread, 22
+long life bakery product, 30
+pita bread, 20
+bagels, 25
+ciabatta bread, 28
+baguette, 22
+sourdough bread, 35
+focaccia, 30
+croissants, 25
+danish pastries, 28
+muffins, 20
+donuts, 18
+biscotti, 22
+crackers, 15
+pretzels, 18
+pop-tarts, 25
+rice cakes, 20
+corn tortillas, 18
+flour tortillas, 20
+naan, 22

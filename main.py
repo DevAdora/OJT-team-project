@@ -10,38 +10,49 @@ from rich.console import Console
 
 def recommendation_system(cart):
     recommender = GroceryStoreRecommender()
-    selected_items = []
     console = Console()
     while True:
         user_query = input("Enter some products you want to buy (type 'exit' to quit): ")
         if user_query.lower() == 'exit':
-            for item in selected_items:
-                cart.add_to_cart(item)
             return
         recommended_items = recommender.recommendItems(user_query)
         if len(recommended_items) < 1:
             console.print("No recommendations found. Please try again.", style="bold red")
             continue
         while recommended_items:
-            table = Table(title="Recommended items")
-            table.add_column("Index", justify="center", style="cyan", no_wrap=True)
-            table.add_column("Item", justify="left", style="magenta")
+            # First display the options
+            options_table = Table(title="Options")
+            options_table.add_column("Key", justify="center", style="cyan", no_wrap=True)
+            options_table.add_column("Action", justify="left", style="magenta")
+            options_table.add_row("n", "New prompt")
+            options_table.add_row("d", "Done selecting items")
+            console.print(options_table)
+            
+            # Show recommended items with product and price columns.
+            items_table = Table(title="Recommended items")
+            items_table.add_column("Index", justify="center", style="cyan", no_wrap=True)
+            items_table.add_column("Product", justify="left", style="magenta")
+            items_table.add_column("Price", justify="left", style="magenta")
             for idx, item in enumerate(recommended_items, 1):
-                table.add_row(str(idx), item)
-            table.add_row("new", "New Recommendation")
-            table.add_row("done", "Finish")
-            console.print(table)
-            choice = input("Enter the number of the item to add to cart, type 'new' for a new recommendation, or 'done' to finish: ")
-            if choice.lower() == 'new':
+                # Expecting item as "product, price"
+                product, price = item.split(", ")
+                items_table.add_row(str(idx), product, price)
+            console.print(items_table)
+            
+            choice = input("Enter the number of the item to add to cart, type 'n' for new prompt or 'd' if you're done: ")
+
+            if choice.lower() == 'n':
                 break
-            elif choice.lower() == 'done':
-                for item in selected_items:
-                    cart.add_to_cart(item)
-                return
+            elif choice.lower() == 'd':
+                return  # Exit the recommendation system
             elif choice.isdigit() and 1 <= int(choice) <= len(recommended_items):
                 selected_item = recommended_items.pop(int(choice) - 1)
-                selected_items.append(selected_item)
-                console.print(f"{selected_item} has been added to your list.", style="bold green")
+                product, price = selected_item.split(", ")
+                qty = input(f"Enter quantity for {product}: ")
+                if qty.isdigit() and int(qty) > 0:
+                    cart.add_to_cart(product, price, int(qty))
+                else:
+                    console.print("Invalid quantity. Please try again.", style="bold red")
             else:
                 console.print("Invalid choice. Please try again.", style="bold red")
 

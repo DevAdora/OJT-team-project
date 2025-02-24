@@ -1,7 +1,7 @@
 Receipt for Rey on 20250224
 Items purchased:
-- hazelnut milk
-- soda
-- protein powder
-- frozen dessert
-- frozen vegetables
+- hazelnut milk, 30
+- soda, 10
+- protein powder, 50
+- frozen dessert, 30
+- frozen vegetables, 25

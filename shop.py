@@ -22,7 +22,7 @@ class Shop:
         table = Table(title="Categories")
         table.add_column("Index", justify="center", style="cyan", no_wrap=True)
         table.add_column("Category", justify="left", style="magenta")
-        table.add_row("[0]", "Exit")
+        table.add_row("0", "Exit")
         for idx, (_, category_name) in enumerate(self.categories, 1):
             table.add_row(str(idx), category_name)
         self.console.print(table)
@@ -33,9 +33,11 @@ class Shop:
         table = Table(title="Products")
         table.add_column("Index", justify="center", style="cyan", no_wrap=True)
         table.add_column("Product", justify="left", style="magenta")
-        table.add_row("0", "Exit")
+        table.add_column("Price", justify="right", style="green")
+        table.add_row("0", "Exit", "")
         for idx, product in enumerate(products, 1):
-            table.add_row(str(idx), product.strip())
+            item, price = product.strip().split(", ")
+            table.add_row(str(idx), item, price)
         self.console.print(table)
         return products
 
@@ -54,7 +56,12 @@ class Shop:
                         break
                     elif product_choice.isdigit() and 1 <= int(product_choice) <= len(products):
                         selected_product = products[int(product_choice) - 1].strip()
-                        self.cart.add_to_cart(selected_product)
+                        item, price = selected_product.split(", ")
+                        quantity = input(f"Enter the quantity for {item}: ")
+                        if quantity.isdigit() and int(quantity) > 0:
+                            self.cart.add_to_cart(item, price, int(quantity))
+                        else:
+                            self.console.print("Invalid quantity. Please try again.", style="bold red")
                     else:
                         self.console.print("Invalid choice. Please try again.", style="bold red")
             else:

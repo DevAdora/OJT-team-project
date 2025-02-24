@@ -1,29 +1,29 @@
-soda
-misc. beverages
-liquor (appetizer)
-liquor
-whisky
-brandy
-sparkling wine
-white wine
-prosecco
-coffee
-tea
-liqueur
-rum
-red/blush wine
-fruit/vegetable juice
-coconut water
-almond milk
-oat milk
-soy milk
-hazelnut milk
-protein powder
-energy drink
-kombucha
-iced tea
-sparkling water
-mineral water
-lemonade
-apple cider
-hard cider
+soda, 10
+misc. beverages, 15
+liquor (appetizer), 50
+liquor, 45
+whisky, 60
+brandy, 55
+sparkling wine, 40
+white wine, 35
+prosecco, 38
+coffee, 20
+tea, 15
+liqueur, 50
+rum, 45
+red/blush wine, 35
+fruit/vegetable juice, 25
+coconut water, 30
+almond milk, 25
+oat milk, 25
+soy milk, 25
+hazelnut milk, 30
+protein powder, 50
+energy drink, 20
+kombucha, 25
+iced tea, 15
+sparkling water, 10
+mineral water, 10
+lemonade, 15
+apple cider, 20
+hard cider, 25

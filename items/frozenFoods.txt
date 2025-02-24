@@ -1,6 +1,6 @@
-frozen dessert
-frozen vegetables
-frozen chicken
-frozen potato products
-frozen meals
-frozen fish
+frozen dessert, 30
+frozen vegetables, 25
+frozen chicken, 40
+frozen potato products, 20
+frozen meals, 35
+frozen fish, 45
