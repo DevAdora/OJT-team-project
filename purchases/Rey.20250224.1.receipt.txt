@@ -1,9 +1,0 @@
-Receipt for Rey on 20250224
-Items purchased:
-- soda, 10
-- misc. beverages, 15
-- liquor (appetizer), 50
-- liquor, 45
-- whisky, 60
-- frozen fruits, 25
-- frozen meals, 35
