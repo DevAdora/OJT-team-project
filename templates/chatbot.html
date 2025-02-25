@@ -19,6 +19,7 @@
                 Welcome, {{ username }}
             </button>
             <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{{ url_for('menu') }}">Menu</a></li>
                 <li><a class="dropdown-item" href="{{ url_for('shop') }}">Shop</a></li>
                 <li><a class="dropdown-item" href="{{ url_for('cart') }}">Cart</a></li>
                 <li><a class="dropdown-item" href="{{ url_for('home') }}">Logout</a></li>

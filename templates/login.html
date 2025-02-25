@@ -1,167 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fresh Insights - Login</title>
-  <style>
-    :root {
-      --primary-green: #008242;
-      --primary-orange: #FF9966;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fresh Insights - Login</title>
+    <style>
+      :root {
+        --primary-green: #008242;
+        --primary-orange: #ff9966;
+      }
 
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-      background: white;
-    }
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background: white;
+      }
 
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px;
-      text-align: center;
-    }
+      .container {
+        background-image: url("{{ url_for('static', filename='images/login_bg.png') }}");
+        background-position: center;
+        background-size: 120%;
+        background-repeat: no-repeat;
+        max-width: 1800px;
+        margin: 0 auto;
+        min-height: 100vh;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+      }
 
-    .logo {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-    
-    .logo h1 {
-      margin: 0;
-      font-size: 4.5rem;
-      line-height: 1;
-      font-family: Arial, sans-serif;
-      font-weight: bold;
-    }
+      .logo {
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        display: flex;
+        text-align: center;
+        margin-bottom: 40px;
+      }
+      .logo img {
+        width: 50%;
+        height: 50%;
+      }
+      .logo h1 {
+        margin: 0;
+        font-size: 4.5rem;
+        line-height: 1;
+        font-family: Arial, sans-serif;
+        font-weight: bold;
+      }
 
-    .fresh {
-      color: #008242;  /* Deep green color */
-      display: block;
-    }
+      .fresh {
+        color: #008242; /* Deep green color */
+        display: block;
+      }
 
-    .insights {
-      color: #FF9966;  /* Coral orange color */
-      display: block;
-    }
+      .insights {
+        color: #ff9966; /* Coral orange color */
+        display: block;
+      }
 
-    .dot {
-      color: #FF9966;  /* Coral orange color */
-      position: relative;
-      top: -20px;
-      left: 5px;
-      font-size: 3rem;
-    }
+      .dot {
+        color: #ff9966; /* Coral orange color */
+        position: relative;
+        top: -20px;
+        left: 5px;
+        font-size: 3rem;
+      }
 
-    .login-form {
-      max-width: 400px;
-      margin: 0 auto;
-    }
+      .login-form {
+        max-width: 400px;
+        margin: 0 auto;
+      }
 
-    .login-type {
-      margin-bottom: 20px;
-    }
+      .login-type {
+        margin-bottom: 20px;
+      }
 
-    .login-type label {
-      font-size: 1.2rem;
-      margin-right: 10px;
-    }
+      .login-type label {
+        font-size: 1.2rem;
+        margin-right: 10px;
+      }
 
-    .login-type select {
-      padding: 8px 20px;
-      border-radius: 20px;
-      border: 2px solid #000;
-      font-size: 1rem;
-      width: 150px;
-    }
+      .login-type select {
+        padding: 8px 20px;
+        border-radius: 20px;
+        border: 2px solid #000;
+        font-size: 1rem;
+        width: 150px;
+      }
 
-    .input-field {
-      margin-bottom: 15px;
-    }
+      .input-field {
+        margin-bottom: 15px;
+      }
 
-    .input-field input {
-      width: 100%;
-      padding: 12px 20px;
-      border: 2px solid #000;
-      border-radius: 25px;
-      font-size: 1rem;
-      box-sizing: border-box;
-    }
+      .input-field input {
+        width: 100%;
+        padding: 12px 20px;
+        border: 2px solid #000;
+        border-radius: 25px;
+        font-size: 1rem;
+        box-sizing: border-box;
+      }
 
-    .background-images {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      pointer-events: none;
-    }
+      .background-images {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        pointer-events: none;
+      }
 
-    .login-button {
-      background-color: #008242;  /* Same green as the logo */
-      color: white;
-      padding: 12px 30px;
-      border: none;
-      border-radius: 25px;
-      font-size: 1.1rem;
-      cursor: pointer;
-      margin-top: 20px;
-      transition: background-color 0.3s;
-    }
+      .login-button {
+        background-color: #008242; /* Same green as the logo */
+        color: white;
+        padding: 12px 30px;
+        border: none;
+        border-radius: 25px;
+        font-size: 1.1rem;
+        cursor: pointer;
 
-    .login-button:hover {
-      background-color: #006934;  /* Slightly darker on hover */
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <div class="logo">
-      <h1>
-        <span class="fresh">Fresh<span class="dot">.</span></span>
-        <span class="insights">Insights</span>
-      </h1>
+        margin-top: 20px;
+        transition: background-color 0.3s;
+      }
+
+      .login-button:hover {
+        background-color: #006934; /* Slightly darker on hover */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="logo">
+        <img src="../static/images/login_text.png" />
+      </div>
+      <form class="login-form" action="{{ url_for('login') }}" method="POST">
+        <div class="login-type">
+          <label>Log in as:</label>
+          <select
+            id="loginType"
+            name="login_type"
+            onchange="toggleLoginFields()"
+          >
+            <option value="user">User</option>
+            <option value="admin">Admin</option>
+          </select>
+        </div>
+
+        <div class="input-field">
+          <input
+            type="text"
+            id="username"
+            name="username"
+            placeholder="Username"
+            required
+          />
+        </div>
+
+        <div class="input-field" id="passwordField" style="display: none">
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Password"
+          />
+        </div>
+
+        <button type="submit" class="login-button">Login</button>
+      </form>
+
+      {% if error %}
+      <p style="color: red">{{ error }}</p>
+      {% endif %}
     </div>
 
-    <form class="login-form" action="{{ url_for('login') }}" method="POST">
-      <div class="login-type">
-        <label>Log in as:</label>
-        <select id="loginType" name="login_type" onchange="toggleLoginFields()">
-          <option value="user">User</option>
-          <option value="admin">Admin</option>
-        </select>
-      </div>
+    <script>
+      function toggleLoginFields() {
+        const loginType = document.getElementById("loginType").value;
+        const passwordField = document.getElementById("passwordField");
 
-      <div class="input-field">
-        <input type="text" id="username" name="username" placeholder="Username" required>
-      </div>
-
-      <div class="input-field" id="passwordField" style="display: none;">
-        <input type="password" id="password" name="password" placeholder="Password">
-      </div>
-
-      <button type="submit" class="login-button">Login</button>
-    </form>
-
-    {% if error %}
-      <p style="color:red;">{{ error }}</p>
-    {% endif %}
-  </div>
-
-  <script>
-    function toggleLoginFields() {
-      const loginType = document.getElementById('loginType').value;
-      const passwordField = document.getElementById('passwordField');
-      
-      if (loginType === 'user') {
-        passwordField.style.display = 'none';
-        document.getElementById('password').required = false;
-      } else {
-        passwordField.style.display = 'block';
-        document.getElementById('password').required = true;
+        if (loginType === "user") {
+          passwordField.style.display = "none";
+          document.getElementById("password").required = false;
+        } else {
+          passwordField.style.display = "block";
+          document.getElementById("password").required = true;
+        }
       }
-    }
-  </script>
-</body>
+    </script>
+  </body>
 </html>
