@@ -69,6 +69,10 @@ class Admin:
             items.append(item_entry)
         with open(category_file, 'w') as f:
             f.write('\n'.join(items))
+        
+        # Update productsDataset.txt
+        self.update_products_dataset(item_entry)
+        
         return f"Item '{item}' added/updated in category '{category}'."
 
     def delete_item(self, category, item):
@@ -81,6 +85,10 @@ class Admin:
             items = [i for i in items if not i.startswith(item)]
             with open(category_file, 'w') as f:
                 f.write('\n'.join(items))
+            
+            # Update productsDataset.txt
+            self.update_products_dataset()
+            
             return f"Item '{item}' deleted from category '{category}'."
         return f"Category '{category}' or item '{item}' not found."
 
@@ -99,5 +107,27 @@ class Admin:
                     updated_items.append(item)
             with open(category_file, 'w') as f:
                 f.write('\n'.join(updated_items))
+            
+            # Update productsDataset.txt
+            self.update_products_dataset()
+            
             return f"Item '{old_item}' updated to '{new_item}' with price '{price}' in category '{category}'."
         return f"Category '{category}' or item '{old_item}' not found."
+    
+    def update_products_dataset(self, new_item=None):
+        items_dir = 'items'
+        dataset_file = 'productsDataset.txt'
+        all_items = []
+        
+        if os.path.exists(items_dir):
+            items_files = [f for f in os.listdir(items_dir) if f.endswith('.txt')]
+            for file in items_files:
+                with open(os.path.join(items_dir, file), 'r') as f:
+                    items = f.read().splitlines()
+                    all_items.extend(items)
+        
+        if new_item and new_item not in all_items:
+            all_items.append(new_item)
+        
+        with open(dataset_file, 'w') as f:
+            f.write('\n'.join(all_items))
