@@ -3,17 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <title>Shop</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <h1>Shop Categories</h1>
+    {% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
     <ul>
-        {% for category in categories %}
+        {% for category in categories %} 
             <li>
-                <form action="{{ url_for('view_category', category=category) }}" method="get">
-                    <button type="submit">{{ category }}</button>
-                </form>
+                <a href="#" class="category-link" data-category="{{ category.0 }}">{{ category.1 }}</a>
             </li>
         {% endfor %}
     </ul>
+    <div id="category-products"></div>
+    <button id="menu-button">Menu</button>
+    <button id="checkout-button">Cart</button>
+
+    <script>
+        $(document).ready(function() {
+            $('.category-link').click(function(event) {
+                event.preventDefault();
+                var category = $(this).data('category');
+                $.ajax({
+                    url: "{{ url_for('get_products') }}",
+                    method: "POST",
+                    contentType: "application/json",
+                    data: JSON.stringify({ category: category }),
+                    success: function(response) {
+                        displayProducts(response);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error("Error fetching products:", error);
+                    }
+                });
+            });
+
+            $('#menu-button').click(function() {
+                window.location.href = "{{ url_for('menu') }}";
+            });
+
+            $('#checkout-button').click(function() {
+                window.location.href = "{{ url_for('cart') }}";
+            });
+        });
+
+        function displayProducts(response) {
+            var products = $(response).find('li').map(function() {
+                return $(this).text();
+            }).get();
+
+            var table = '<table><thead><tr><th>Product</th><th>Price</th><th>Quantity</th><th>Action</th></tr></thead><tbody>';
+            products.forEach(function(product) {
+                var parts = product.split(', ');
+                table += '<tr><td>' + parts[0] + '</td><td>' + parts[1] + '</td><td><input type="number" class="quantity-input" min="1" value="1"></td><td><button class="add-to-cart-button" data-product="' + parts[0] + ', ' + parts[1] + '">Add to Cart</button></td></tr>';
+            });
+            table += '</tbody></table>';
+
+            $('#category-products').html(table);
+        }
+
+        $(document).on('click', '.add-to-cart-button', function() {
+            var product = $(this).data('product');
+            var quantity = $(this).closest('tr').find('.quantity-input').val();
+            $.ajax({
+                url: "{{ url_for('add_to_cart') }}",
+                method: "POST",
+                contentType: "application/json",
+                data: JSON.stringify({ item: product, quantity: quantity }),
+                success: function(response) {
+                    alert(response.message);
+                },
+                error: function(xhr, status, error) {
+                    console.error("Error adding to cart:", error);
+                    alert("Error adding to cart: " + xhr.responseJSON.message);
+                }
+            });
+        });
+    </script>
 </body>
 </html>

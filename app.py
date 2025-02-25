@@ -3,7 +3,7 @@ import datetime
 import os
 from chatbot import GroceryStoreRecommender
 from shop import Shop
-from shopping import ShoppingCart
+from cart import ShoppingCart
 
 app = Flask(__name__)
 app.secret_key = 'your-secret-key'
@@ -86,23 +86,6 @@ def recommend():
             return render_template('recommend.html', error="Please enter a query.")
     return render_template('recommend_form.html')
 
-@app.route('/shop')
-def shop():
-    if 'username' not in session:
-        return redirect(url_for('home'))
-    shop_instance = Shop(ShoppingCart())  
-    return render_template('shop.html', categories=shop_instance.categories)
-
-@app.route('/category/<category>')
-def view_category(category):
-    shop_instance = Shop(ShoppingCart())
-    items = shop_instance.display_products(category)
-    if items:
-        return render_template('category.html', category=category, items=items)
-    else:
-        flash("Category not found.")
-        return redirect(url_for('shop'))
-
 @app.route('/cart')
 def cart():
     username = session.get('username')
@@ -126,6 +109,28 @@ def checkout():
     else:
         flash("No cart found to checkout.")
     return render_template('checkout.html', receipt=receipt)
+
+@app.route('/shop')
+def shop():
+    username = session.get('username')
+    if not username:
+        return redirect(url_for('home'))
+    if username not in user_carts:
+        user_carts[username] = ShoppingCart()
+    shop_instance = Shop(user_carts[username])
+    return render_template('shop.html', categories=shop_instance.categories)
+
+@app.route('/get_products', methods=['POST'])
+def get_products():
+    data = request.get_json()
+    category_filename = data.get('category')
+    if not category_filename:
+        return jsonify({"message": "Category not provided!"}), 400
+
+    shop_instance = Shop(user_carts[session['username']])
+    products = shop_instance.display_products(category_filename)
+    products_html = render_template('products.html', products=products)
+    return products_html
 
 if __name__ == '__main__':
     app.run(debug=True)

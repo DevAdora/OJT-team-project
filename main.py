@@ -2,7 +2,7 @@ import re
 import datetime
 import os
 from chatbot import GroceryStoreRecommender
-from shopping import ShoppingCart
+from cart import ShoppingCart
 from shop import Shop
 from rich.table import Table
 from rich.console import Console

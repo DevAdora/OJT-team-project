@@ -15,10 +15,8 @@
             </ul>
         {% endif %}
     {% endwith %}
-    {% if receipt %}
+    {% if 'Items' in receipt %}
         <p>Your receipt has been generated: {{ receipt }}</p>
-    {% else %}
-        <p>No receipt found.</p>
     {% endif %}
     <br>
     <a href="{{ url_for('menu') }}">Back to Main Menu</a>
