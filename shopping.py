@@ -1,6 +1,7 @@
 import os
 from rich.console import Console
 from rich.table import Table
+import datetime
 
 class ShoppingCart:
     def __init__(self):
@@ -22,34 +23,22 @@ class ShoppingCart:
             table.add_column("Total", justify="right", style="cyan")
             total_price = 0
             for item, price, quantity in self.cart:
-                total = int(price) * int(quantity)
-                total_price += int(total)
-                table.add_row(item, str(price), str(quantity), str(total))
-            table.add_row("Total", "", "", str(total_price))
+                total = price * quantity
+                total_price += total
+                table.add_row(item, f"${price:.2f}", str(quantity), f"${total:.2f}")
             self.console.print(table)
+            self.console.print(f"Total Price: ${total_price:.2f}", style="bold green")
 
     def checkout(self, receipt_filename):
         if not self.cart:
-            self.console.print("Your cart is empty. Add items to your cart before checking out.", style="bold red")
             return False
-        else:
-            if not os.path.exists('purchases'):
-                os.makedirs('purchases')
-            with open(receipt_filename, 'w') as f:
-                username, date = receipt_filename.split('.')[0], receipt_filename.split('.')[1]
-                f.write(f"Receipt for {username.replace("purchases/", "")} on {date}\n")
-                f.write("Items purchased:\n")
-                for item, price, quantity in self.cart:
-                    f.write(f"- {item}: {quantity} x {price}\n")
-            self.console.print("Checking out the following items:", style="bold green")
-            table = Table(title="Items Purchased")
-            table.add_column("Items", justify="left", style="magenta")
-            table.add_column("Quantity", justify="left", style="magenta")
-            table.add_column("Price", justify="left", style="magenta")
-            table.add_column("Total", justify="left", style="magenta")
+        # Splice the receipt_filename to extract the username and date
+        parts = receipt_filename.split('.')
+        username = parts[0].split('/')[-1]  # Extract username
+        date_str = parts[1]  # Extract date
+        with open(receipt_filename, 'a') as f:
+            f.write("Items purchased:\n")
             for item, price, quantity in self.cart:
-                table.add_row(item, str(price), str(quantity), str(int(price) * int(quantity)))
-            self.console.print(table)
-            self.cart.clear()
-            self.console.print(f"Thank you for your purchase! Receipt saved as {receipt_filename}", style="bold green")
-            return True
+                f.write(f"- {item}: {quantity} x {price}\n")
+        self.cart.clear()
+        return True

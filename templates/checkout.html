@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Checkout</title>
+</head>
+<body>
+    <h1>Checkout</h1>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    {% if receipt %}
+        <p>Your receipt has been generated: {{ receipt }}</p>
+    {% else %}
+        <p>No receipt found.</p>
+    {% endif %}
+    <br>
+    <a href="{{ url_for('menu') }}">Back to Main Menu</a>
+</body>
+</html>

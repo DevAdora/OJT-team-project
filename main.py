@@ -94,13 +94,6 @@ def user_menu(username):
             console.print("Invalid choice. Please try again.", style="bold red")
 
 
-
-
-
-
-
-
-
 def admin_menu():
     print("Admin menu is under construction.")
     print("\nOptions Menu:")

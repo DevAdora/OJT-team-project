@@ -10,12 +10,20 @@ class Shop:
 
     def load_categories(self):
         categories = []
-        for filename in os.listdir('items'):
-            if filename.endswith('.txt'):
-                category_name = filename.replace('.txt', '')
-                category_name = ''.join([' ' + char if char.isupper() else char for char in category_name]).strip()
-                category_name = category_name.replace('And', 'and').title()
-                categories.append((filename, category_name))
+        if not os.path.exists('items'):
+            self.console.print("The 'items' directory does not exist.", style="bold red")
+            return categories
+
+        txt_files = [f for f in os.listdir('items') if f.endswith('.txt')]
+        if not txt_files:
+            self.console.print("No '.txt' files found in the 'items' directory.", style="bold red")
+            return categories
+
+        for filename in txt_files:
+            category_name = filename.replace('.txt', '')
+            category_name = ''.join([' ' + char if char.isupper() else char for char in category_name]).strip()
+            category_name = category_name.replace('And', 'and').title()
+            categories.append((filename, category_name))
         return categories
 
     def display_categories(self):
@@ -28,6 +36,7 @@ class Shop:
         self.console.print(table)
 
     def display_products(self, category_filename):
+        print(category_filename)
         with open(f'items/{category_filename}', 'r') as f:
             products = f.readlines()
         table = Table(title="Products")
@@ -36,8 +45,11 @@ class Shop:
         table.add_column("Price", justify="right", style="green")
         table.add_row("0", "Exit", "")
         for idx, product in enumerate(products, 1):
-            item, price = product.strip().split(", ")
-            table.add_row(str(idx), item, price)
+            try:
+                item, price = product.strip().split(", ")
+                table.add_row(str(idx), item, price)
+            except ValueError:
+                self.console.print(f"Skipping invalid product line: {product.strip()}", style="bold red")
         self.console.print(table)
         return products
 

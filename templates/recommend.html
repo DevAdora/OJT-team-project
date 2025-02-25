@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recommendations</title>
+</head>
+<body>
+    <h1>Recommendations for "{{ query }}"</h1>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    {% if recommendations %}
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Recommendation</th>
+                    <th>Quantity</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in recommendations %}
+                    <tr>
+                        <td>{{ item }}</td>
+                        <td>
+                            <input type="number" id="quantity_{{ loop.index }}" placeholder="Qty" min="1">
+                        </td>
+                        <td>
+                            <button onclick="addToCart('{{ item }}', document.getElementById('quantity_{{ loop.index }}').value)">Add to Cart</button>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No recommendations found for "{{ query }}".</p>
+    {% endif %}
+    <br>
+    <a href="{{ url_for('recommend') }}">Search Again</a>
+    <br>
+    <a href="{{ url_for('menu') }}">Back to Main Menu</a>
+
+    <script>
+        function addToCart(item, quantity) {
+            if (quantity) {
+                fetch('/add_to_cart', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ item: item, quantity: quantity })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    alert(data.message);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            } else {
+                alert('Please enter a quantity.');
+            }
+        }
+    </script>
+</body>
+</html>
