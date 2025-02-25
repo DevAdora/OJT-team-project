@@ -43,7 +43,7 @@ class ShoppingCart:
                 parts = filename.split('/')[-1].split('.')
                 username = parts[0]
                 date_str = parts[1]
-                f.write(f"Receipt for {username.replace("purchases\\", "")} on {date_str}\n")
+                f.write(f"Receipt for {username.replace("purchases/", "")} on {date_str}\n")
                 f.write("Items purchased:\n")
                 for item, price, quantity in self.cart:
                     f.write(f"- {item}: {quantity} x {price}\n")
