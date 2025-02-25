@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .menu-option {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            text-align: left;
+        }
+        .menu-option:hover {
+            background-color: #0056b3;
+        }
+        .back-btn {
+            background-color: #6c757d;
+            margin-top: 20px;
+        }
+        .content-area {
+            display: none;
+        }
+        .active {
+            display: block;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .btn-primary { background-color: #007bff; color: white; }
+        .btn-danger { background-color: #dc3545; color: white; }
+        .btn-secondary { background-color: #6c757d; color: white; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Admin Menu</h1>
+            <button class="btn btn-danger" onclick="logout()">Logout</button>
+        </div>
+
+        <!-- Main Menu -->
+        <div id="mainMenu" class="card">
+            <button class="menu-option" onclick="showPurchaseList()">1. Purchase List</button>
+            <button class="menu-option" onclick="showItemsMenu()">2. Available items on sale</button>
+        </div>
+
+        <!-- Purchase List Section -->
+        <div id="purchaseList" class="card content-area">
+            <h2>Purchase List</h2>
+            <div id="purchaseHistory">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Receipt #</th>
+                            <th>Date</th>
+                            <th>Items</th>
+                            <th>Total</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Purchase history will be loaded here dynamically -->
+                    </tbody>
+                </table>
+            </div>
+            <button class="menu-option back-btn" onclick="showMainMenu()">Back to Main Menu</button>
+        </div>
+
+        <!-- Items Menu Section -->
+        <div id="itemsMenu" class="card content-area">
+            <h2>Available items on sale</h2>
+            <button class="menu-option" onclick="viewItemsByCategory()">1. View items by category</button>
+            <button class="menu-option" onclick="showAddUpdateItems()">2. Add new or update existing items</button>
+            <button class="menu-option" onclick="showDeleteItems()">3. Delete items</button>
+            <button class="menu-option back-btn" onclick="showMainMenu()">4. Return to Main Menu</button>
+        </div>
+
+        <!-- Category View Section -->
+        <div id="categoryView" class="card content-area">
+            <h2>Select Category to view:</h2>
+            <div id="categoryList">
+                <button class="btn btn-primary" onclick="showCategoryItems('bakeryAndBread')">Bakery and Bread</button>
+                <button class="btn btn-primary" onclick="showCategoryItems('beverages')">Beverages</button>
+                <button class="btn btn-primary" onclick="showCategoryItems('dairyandEggs')">Dairy and Eggs</button>
+                <button class="btn btn-primary" onclick="showCategoryItems('clothing')">Clothing</button>
+                <button class="btn btn-primary" onclick="showCategoryItems('all')">All Categories</button>
+            </div>
+            <div id="itemsList"></div>
+            <button class="menu-option back-btn" onclick="showItemsMenu()">Back to Items Menu</button>
+        </div>
+    </div>
+
+    <script>
+        function showMainMenu() {
+            hideAllSections();
+            document.getElementById('mainMenu').style.display = 'block';
+        }
+
+        function showPurchaseList() {
+            hideAllSections();
+            document.getElementById('purchaseList').style.display = 'block';
+            fetch('/get_purchases', {
+                credentials: 'include',  // Include cookies for authentication
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem('token')  // Add token if you're using JWT
+                }
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        if (response.status === 401) {
+                            // Simply redirect to login page instead of making a request
+                            window.location.replace('/');
+                            throw new Error('Please log in to view purchases');
+                        }
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const purchaseHistory = document.getElementById('purchaseHistory').getElementsByTagName('tbody')[0];
+                    if (data.purchases && Array.isArray(data.purchases)) {
+                        purchaseHistory.innerHTML = data.purchases.map(purchase => {
+                            // Parse filename: username.YYYYMMDD.number.receipt.txt
+                            const parts = purchase.filename.split('.');
+                            const username = parts[0];
+                            const date = parts[1].replace(/(\d{4})(\d{2})(\d{2})/, '$1-$2-$3');
+                            const orderNum = parts[2];
+                            
+                            // Join items, excluding the header
+                            const items = purchase.items.join(', ');
+                            
+                            return `
+                                <tr>
+                                    <td>${orderNum}</td>
+                                    <td>${date}</td>
+                                    <td>${items}</td>
+                                    <td>${username}</td>
+                                    <td>
+                                        <button class="btn btn-primary" onclick="viewReceipt('${purchase.filename}')">View</button>
+                                    </td>
+                                </tr>
+                            `;
+                        }).join('');
+                    } else {
+                        purchaseHistory.innerHTML = '<tr><td colspan="5">No purchases found</td></tr>';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching purchases:', error);
+                    const purchaseHistory = document.getElementById('purchaseHistory').getElementsByTagName('tbody')[0];
+                    purchaseHistory.innerHTML = `<tr><td colspan="5">Error: ${error.message}</td></tr>`;
+                });
+        }
+
+
+        function showItemsMenu() {
+            hideAllSections();
+            document.getElementById('itemsMenu').style.display = 'block';
+        }
+
+        function viewItemsByCategory() {
+            hideAllSections();
+            document.getElementById('categoryView').style.display = 'block';
+        }
+
+        function showCategoryItems(category) {
+            fetch(`/get_items/${category}`)
+                .then(response => response.json())
+                .then(data => {
+                    const itemsList = document.getElementById('itemsList');
+                    itemsList.innerHTML = `
+                        <h3>${category}</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Item Name</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${data.items.map(item => `
+                                    <tr>
+                                        <td>${item}</td>
+                                        <td>
+                                            <button class="btn btn-primary" onclick="editItem('${item}')">Edit</button>
+                                            <button class="btn btn-danger" onclick="deleteItem('${item}')">Delete</button>
+                                        </td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    `;
+                });
+        }
+
+        function hideAllSections() {
+            const sections = document.getElementsByClassName('content-area');
+            for (let section of sections) {
+                section.style.display = 'none';
+            }
+        }
+
+        function logout() {
+            window.location.href = '/logout';
+        }
+
+        // Show main menu by default
+        showMainMenu();
+    </script>
+</body>
+</html> 

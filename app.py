@@ -21,6 +21,17 @@ def home():
 @app.route('/login', methods=['POST'])
 def login():
     username = request.form.get('username')
+    password = request.form.get('password')
+    login_type = request.form.get('login_type')
+
+    if login_type == 'admin':
+        if username == 'admin' and password == 'admin':
+            session['username'] = username
+            session['user_type'] = 'admin'
+            return redirect(url_for('dashboard'))
+        else:
+            return render_template('login.html', error="Invalid admin credentials")
+
     if username and username.isalnum():
         session['username'] = username
         date_str = datetime.datetime.now().strftime("%Y%m%d")
@@ -38,6 +49,13 @@ def login():
         return redirect(url_for('menu'))
     else:
         return render_template('login.html', error="Invalid username. Only letters and numbers allowed.")
+
+@app.route('/dashboard')
+def dashboard():
+    username = session.get('username')
+    if username == 'admin':
+        return render_template('dashboard.html')
+    return redirect(url_for('home'))
 
 @app.route('/add_to_cart', methods=['POST'])
 def add_to_cart():
@@ -126,6 +144,34 @@ def checkout():
     else:
         flash("No cart found to checkout.")
     return render_template('checkout.html', receipt=receipt)
+
+@app.route('/get_purchases')
+def get_purchases():
+    if not session.get('logged_in') or session.get('user_type') != 'admin':
+        return jsonify({'error': 'Unauthorized'}), 401
+    
+    purchases = []
+    purchase_dir = 'purchases'
+    
+    if os.path.exists(purchase_dir):
+        for root, dirs, files in os.walk(purchase_dir):
+            for file in files:
+                if file.endswith('.receipt.txt'):
+                    file_path = os.path.join(root, file)
+                    try:
+                        with open(file_path, 'r') as f:
+                            content = f.read()
+                            # Skip the header line when getting items
+                            items = [line.strip() for line in content.split('\n')[1:] if line.strip()]
+                            purchases.append({
+                                'filename': file,
+                                'content': content,
+                                'items': items
+                            })
+                    except IOError as e:
+                        print(f"Error reading file {file_path}: {e}")
+                        
+    return jsonify({'purchases': purchases})
 
 if __name__ == '__main__':
     app.run(debug=True)

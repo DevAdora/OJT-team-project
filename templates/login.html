@@ -7,21 +7,20 @@
 </head>
 <body>
   <h1>Login</h1>
-  <form action="{{ url_for('login') }}" method="post">
+  <form id="loginForm" onsubmit="return handleLogin(event)">
     <label for="login_type">Login as:</label>
     <select name="login_type" id="login_type" required onchange="togglePasswordField()">
       <option value="user">User</option>
       <option value="admin">Admin</option>
     </select>
-  </form>
-  {% if error %}
-    <p style="color:red;">{{ error }}</p>
-  {% endif %}
-  <form action="{{ url_for('login') }}" method="post">
     <input type="text" name="username" placeholder="Enter your username" required>
     <input type="password" name="password" id="password" placeholder="Enter your password" style="display:none;">
     <input type="submit" value="Login">
   </form>
+  {% if error %}
+    <p style="color:red;">{{ error }}</p>
+  {% endif %}
+
   <script>
     function togglePasswordField() {
       var loginType = document.getElementById('login_type').value;
@@ -33,6 +32,23 @@
         passwordField.style.display = 'none';
         passwordField.required = false;
       }
+    }
+
+    function handleLogin(event) {
+      event.preventDefault();
+      const loginType = document.getElementById('login_type').value;
+      const username = document.querySelector('input[name="username"]').value;
+      const password = document.getElementById('password').value;
+
+      if (loginType === 'admin' && username === 'admin' && password === 'admin') {
+        window.location.href = '/dashboard';
+        return false;
+      } else if (loginType === 'user') {
+        window.location.href = '/menu';
+        return false;
+      }
+      // For invalid credentials, submit the form normally
+      return true;
     }
   </script>
 </body>
