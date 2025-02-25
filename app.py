@@ -18,37 +18,25 @@ recommender = GroceryStoreRecommender()
 def home():
     return render_template('login.html')
 
-@app.route('/login', methods=['POST'])
+@app.route('/login', methods=['GET', 'POST'])
 def login():
-    username = request.form.get('username')
-    password = request.form.get('password')
-    login_type = request.form.get('login_type')
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form.get('password', '')  # password might be empty for user login
+        login_type = request.form['loginType']
 
-    if login_type == 'admin':
-        if username == 'admin' and password == 'admin':
-            session['username'] = username
-            session['user_type'] = 'admin'
-            return redirect(url_for('dashboard'))
-        else:
-            return render_template('login.html', error="Invalid admin credentials")
+        if login_type == 'user':
+            # Add your user validation logic here
+            return redirect(url_for('menu'))
+        elif login_type == 'admin':
+            # Add your admin validation logic here
+            if password:  # Check if password is provided for admin
+                return redirect(url_for('menu'))
+            
+        # If validation fails, you might want to show an error
+        return redirect(url_for('login'))
 
-    if username and username.isalnum():
-        session['username'] = username
-        date_str = datetime.datetime.now().strftime("%Y%m%d")
-        increment = 1
-        if not os.path.exists('purchases'):
-            os.makedirs('purchases')
-        while True:
-            receipt_filename = f"purchases/{username}.{date_str}.{increment}.receipt.txt"
-            if not os.path.exists(receipt_filename):
-                with open(receipt_filename, 'w') as f:
-                    f.write(f"Receipt for {username} on {date_str}\n")
-                session['receipt'] = receipt_filename
-                break
-            increment += 1
-        return redirect(url_for('menu'))
-    else:
-        return render_template('login.html', error="Invalid username. Only letters and numbers allowed.")
+    return render_template('login.html')
 
 @app.route('/dashboard')
 def dashboard():
