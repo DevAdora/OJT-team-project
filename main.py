@@ -368,49 +368,6 @@ def admin_menu():
 
             elif items_choice == '4':
                 return
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     console = Console()
     console.print("Admin menu is under construction.", style="bold yellow")
 

@@ -1,4 +1,3 @@
-<!-- html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,15 +12,13 @@
       <option value="user">User</option>
       <option value="admin">Admin</option>
     </select>
-  </form>
-  {% if error %}
-    <p style="color:red;">{{ error }}</p>
-  {% endif %}
-  <form action="{{ url_for('login') }}" method="post">
     <input type="text" name="username" placeholder="Enter your username" required>
     <input type="password" name="password" id="password" placeholder="Enter your password" style="display:none;">
     <input type="submit" value="Login">
   </form>
+  {% if error %}
+    <p style="color:red;">{{ error }}</p>
+  {% endif %}
   <script>
     function togglePasswordField() {
       var loginType = document.getElementById('login_type').value;

@@ -4,6 +4,7 @@ import os
 from chatbot import GroceryStoreRecommender
 from shop import Shop
 from cart import ShoppingCart
+from admin import Admin
 
 app = Flask(__name__)
 app.secret_key = 'your-secret-key'
@@ -21,23 +22,41 @@ def home():
 @app.route('/login', methods=['POST'])
 def login():
     username = request.form.get('username')
-    if username and username.isalnum():
-        session['username'] = username
-        date_str = datetime.datetime.now().strftime("%Y%m%d")
-        increment = 1
-        if not os.path.exists('purchases'):
-            os.makedirs('purchases')
-        while True:
-            receipt_filename = f"purchases/{username}.{date_str}.{increment}.receipt.txt"
-            if not os.path.exists(receipt_filename):
-                with open(receipt_filename, 'w') as f:
-                    f.write(f"Receipt for {username} on {date_str}\n")
-                session['receipt'] = receipt_filename
-                break
-            increment += 1
-        return redirect(url_for('menu'))
+    logintype = request.form.get('login_type')
+    
+    if logintype == 'admin':
+        admin_username = 'admin'
+        admin_password = 'admin'
+        password = request.form.get('password')
+        
+        if username == admin_username and password == admin_password:
+            session['username'] = username
+            session['logintype'] = 'admin'
+            return redirect(url_for('dashboard'))
+        else:
+            return render_template('login.html', error="Invalid admin credentials.")
+    
+    elif logintype == 'user':
+        if username and username.isalnum():
+            session['username'] = username
+            session['logintype'] = 'user'
+            date_str = datetime.datetime.now().strftime("%Y%m%d")
+            increment = 1
+            if not os.path.exists('purchases'):
+                os.makedirs('purchases')
+            while True:
+                receipt_filename = f"purchases/{username}.{date_str}.{increment}.receipt.txt"
+                if not os.path.exists(receipt_filename):
+                    with open(receipt_filename, 'w') as f:
+                        f.write(f"Receipt for {username} on {date_str}\n")
+                    session['receipt'] = receipt_filename
+                    break
+                increment += 1
+            return redirect(url_for('menu'))
+        else:
+            return render_template('login.html', error="Invalid username. Only letters and numbers allowed.")
     else:
-        return render_template('login.html', error="Invalid username. Only letters and numbers allowed.")
+        return render_template('login.html', error="Invalid login type.")
 
 @app.route('/add_to_cart', methods=['POST'])
 def add_to_cart():
@@ -131,6 +150,73 @@ def get_products():
     products = shop_instance.display_products(category_filename)
     products_html = render_template('products.html', products=products)
     return products_html
+
+@app.route('/get_purchases')
+def get_purchases():
+    admin = Admin()
+    purchases = admin.get_purchases()
+    return jsonify({'purchases': purchases})
+
+@app.route('/dashboard')
+def dashboard():
+    if 'username' in session and session.get('logintype') == 'admin':
+        return render_template('dashboard.html')
+    else:
+        return redirect(url_for('home'))
+
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect(url_for('home'))
+
+@app.route('/get_all_items')
+def get_all_items():
+    admin = Admin()
+    items = admin.get_all_categories()
+    return jsonify({'items': items})
+
+@app.route('/get_all_categories')
+def get_all_categories():
+    admin = Admin()
+    items = admin.get_all_categories()
+    print(items)
+    return jsonify({'items': items})
+
+@app.route('/get_items/<category>')
+def get_items(category):
+    admin = Admin()
+    items = admin.get_items_by_category(category)
+    return jsonify({'items': items})
+
+@app.route('/add_update_item', methods=['POST'])
+def add_update_item():
+    data = request.get_json()
+    category = data.get('category')
+    item = data.get('item')
+    price = data.get('price')
+    admin = Admin()
+    result = admin.add_update_item(category, item, price)
+    return jsonify({'message': result})
+
+@app.route('/delete_item', methods=['POST'])
+def delete_item():
+    data = request.get_json()
+    category = data.get('deleteCategory')
+    item = data.get('deleteItem')
+    admin = Admin()
+    result = admin.delete_item(category, item)
+    return jsonify({'message': result})
+
+@app.route('/edit_item', methods=['POST'])
+def edit_item():
+    data = request.get_json()
+    category = data.get('category')
+    old_item = data.get('oldItem')
+    new_item = data.get('newItem')
+    price = data.get('price')
+    admin = Admin()
+    result = admin.edit_item(category, old_item, new_item, price)
+    return jsonify({'message': result})
 
 if __name__ == '__main__':
     app.run(debug=True)
