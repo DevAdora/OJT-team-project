@@ -80,13 +80,14 @@ def add_to_cart():
             cart = ShoppingCart()
             user_carts[username] = cart
         
-        cart.add_to_cart(item.split(", ")[0], int(item.split(", ")[1]), qty)
-        flash(f"Added {qty} of {item} to your cart.")
-        return jsonify({"message": f"Added {qty} of {item} to your cart."})
+        item_name, item_price = item.split(', ')
+        cart.add_to_cart(item_name, int(item_price), qty)
+        flash(f"Added {qty} of {item_name} to your cart.")
+        return jsonify({"message": f"Added {qty} of {item_name} to your cart."})
     else:
         flash("Quantity not provided!")
         return jsonify({"message": "Quantity not provided!"}), 400
-
+    
 @app.route('/menu')
 def menu():
     username = session.get('username')
@@ -97,13 +98,16 @@ def menu():
 @app.route('/recommend', methods=['GET', 'POST'])
 def recommend():
     if request.method == 'POST':
-        query = request.form.get('query')
-        if query:
-            recommendations = recommender.recommendItems(query)
-            return render_template('recommend.html', query=query, recommendations=recommendations)
-        else:
-            return render_template('recommend.html', error="Please enter a query.")
-    return render_template('recommend_form.html')
+        data = request.get_json()
+        query = data.get('query', '').strip()
+        
+        # Use the GroceryStoreRecommender to get recommendations
+        recommendations = recommender.recommendItems(query)
+
+        return jsonify({"query": query, "recommendations": recommendations})
+
+    return render_template('recommend.html')
+
 
 @app.route('/cart')
 def cart():
@@ -113,7 +117,7 @@ def cart():
         return redirect(url_for('menu'))
     user_cart = user_carts[username]
     total = sum(price * quantity for item, price, quantity in user_cart.cart)
-    return render_template('cart.html', cart=user_cart.cart, total=total)
+    return render_template('cart.html', cart=user_cart.cart, total=total, username=username)
 
 @app.route('/checkout', methods=['POST'])
 def checkout():
@@ -159,7 +163,7 @@ def shop():
     if username not in user_carts:
         user_carts[username] = ShoppingCart()
     shop_instance = Shop(user_carts[username])
-    return render_template('shop.html', categories=shop_instance.categories)
+    return render_template('shop.html', categories=shop_instance.categories, username=username)
 
 @app.route('/get_products', methods=['POST'])
 def get_products():
@@ -239,6 +243,10 @@ def edit_item():
     admin = Admin()
     result = admin.edit_item(category, old_item, new_item, price)
     return jsonify({'message': result})
+
+@app.route('/chatbot')
+def chatbot():
+    return render_template('chatbot.html', username=session.get('username', 'User'))
 
 if __name__ == '__main__':
     app.run(debug=True)
