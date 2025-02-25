@@ -1,24 +1,74 @@
+<!-- filepath: /d:/OJT Project/OJT-team-project/templates/checkout.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Checkout</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receipt</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .receipt-container {
+            max-width: 400px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            font-family: monospace;
+        }
+        .receipt-header, .receipt-footer {
+            text-align: center;
+            font-weight: bold;
+            border-bottom: 2px dashed black;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+        .receipt-footer {
+            border-top: 2px dashed black;
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+        .receipt-items {
+            white-space: pre-wrap;
+        }
+    </style>
 </head>
 <body>
-    <h1>Checkout</h1>
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            <ul>
-                {% for message in messages %}
-                    <li>{{ message }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-    {% endwith %}
-    {% if 'Items' in receipt %}
-        <p>Your receipt has been generated: {{ receipt }}</p>
-    {% endif %}
-    <br>
-    <a href="{{ url_for('menu') }}">Back to Main Menu</a>
+    <div class="container mt-5">
+        <div class="receipt-container">
+            <div class="receipt-header">
+                <h4>Fresh Mart</h4>
+                <p>123 Grocery St, Cityville</p>
+                <p>Tel: (123) 456-7890</p>
+                <p>------------------------------------</p>
+            </div>
+            
+            {% if receipt and receipt.Items %}
+                <div class="receipt-items">
+                    {% for item, price, quantity in receipt.Items %}
+                        <p>{{ item.ljust(15) }} x{{ quantity }}  ₱{{ price * quantity }}</p>
+                    {% endfor %}
+                </div>
+                <p>------------------------------------</p>
+                <p><strong>Total: ₱{{ receipt.Total }}</strong></p>
+            {% else %}
+                <p class="text-danger">No items in cart.</p>
+            {% endif %}
+            
+            <div class="receipt-footer">
+                <p>Thank you for shopping with us!</p>
+                <p>Visit Again!</p>
+            </div>
+            
+            <div class="text-center mt-3">
+                <a href="{{ url_for('menu') }}" class="btn btn-primary">Back to Menu</a>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

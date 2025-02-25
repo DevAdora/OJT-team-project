@@ -38,40 +38,47 @@ class ShoppingCart:
         if not self.cart:
             return False
 
-        def write_receipt(filename):
-            with open(filename, 'w') as f:
-                parts = filename.split('/')[-1].split('.')
-                username = parts[0]
-                date_str = parts[1]
-                f.write(f"Receipt for {username.replace("purchases/", "")} on {date_str}\n")
-                f.write("Items purchased:\n")
-                for item, price, quantity in self.cart:
-                    f.write(f"- {item}: {quantity} x {price}\n")
-                self.cart.clear()
-
-        parts = receipt_filename.split('.')
-        username = parts[0].split('/')[-1]  # Extract username
-        date_str = parts[1]  # Extract date
-
-        if os.path.exists(receipt_filename):
-            with open(receipt_filename, 'r') as f:
-                content = f.read()
-                if "Items purchased:" not in content:
-                    write_receipt(receipt_filename)
-                    return True
-
-        parts = receipt_filename.split('.')
-        username = parts[0].split('/')[-1]  # Extract username
-        date_str = parts[1]  # Extract date
-        counter = int(parts[2])  # Extract counter
-
         purchases_folder = "purchases"
         if not os.path.exists(purchases_folder):
             os.makedirs(purchases_folder)
 
+        # Extract username and date_str properly without "purchases/"
+        filename_only = os.path.basename(receipt_filename)  # Removes the "purchases/" path
+        parts = filename_only.split('.')
+
+        if len(parts) < 2:
+            return False  # Invalid filename format
+
+        username = parts[0]  # Extract username directly
+        date_str = parts[1]  # Extract date string
+        counter = 1  # Start with 1
+
         while True:
             new_filename = os.path.join(purchases_folder, f"{username}.{date_str}.{counter}.receipt.txt")
-            if not os.path.exists(new_filename):
-                write_receipt(new_filename)
-                return True
-            counter += 1
+
+            # If the file exists, check its content
+            if os.path.exists(new_filename):
+                with open(new_filename, 'r', encoding="utf-8") as f:
+                    content = f.read()
+
+                # If "Items purchased:" is missing, overwrite this file
+                if "Items purchased:" not in content:
+                    break
+            else:
+                # Use this file if it doesn’t exist
+                break
+            
+            counter += 1  # Increment and try the next filename
+
+        # ✅ Write receipt with UTF-8 encoding
+        with open(new_filename, 'w', encoding="utf-8") as f:
+            f.write(f"Receipt for {username} on {date_str}\n")
+            f.write("Items purchased:\n")
+            for item, price, quantity in self.cart:
+                f.write(f"- {item}: {quantity} x ₱{price} = ₱{price * quantity}\n")
+            total_price = sum(price * quantity for _, price, quantity in self.cart)
+            f.write(f"\nTotal: ₱{total_price}\n")
+
+        self.cart.clear()  # Clear the cart after writing receipt
+        return True
+

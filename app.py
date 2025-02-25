@@ -112,22 +112,44 @@ def cart():
         flash("No shopping cart found.")
         return redirect(url_for('menu'))
     user_cart = user_carts[username]
-    return render_template('cart.html', cart=user_cart.cart)
+    total = sum(price * quantity for item, price, quantity in user_cart.cart)
+    return render_template('cart.html', cart=user_cart.cart, total=total)
 
 @app.route('/checkout', methods=['POST'])
 def checkout():
-    receipt = session.get('receipt')
     username = session.get('username')
-    if username and username in user_carts:
-        cart = user_carts[username]
-        if cart.checkout(receipt):
-            flash("Checkout successful!")
-        else:
-            flash("Your cart is empty. Please add items before checking out.")
-        user_carts.pop(username, None)
-    else:
+    receipt_filename = session.get('receipt').replace('purchases/', '')
+
+    if not username or username not in user_carts:
         flash("No cart found to checkout.")
-    return render_template('checkout.html', receipt=receipt)
+        return redirect(url_for('cart'))
+
+    cart = user_carts[username]
+
+    if not cart.cart:
+        flash("Your cart is empty. Please add items before checking out.")
+        return redirect(url_for('cart'))
+
+    # Compute total before clearing the cart
+    checked_out_cart = cart.cart.copy()
+    total = sum(price * quantity for item, price, quantity in checked_out_cart)
+
+    # Generate receipt content
+    receipt_content = {
+        "Items": checked_out_cart,
+        "Total": total
+    }
+
+    # Call checkout function to save receipt file
+    success = cart.checkout(receipt_filename)
+
+    if success:
+        flash("Checkout successful! Receipt has been saved.")
+        user_carts.pop(username, None)  # Clear the cart after checkout
+        return render_template('checkout.html', receipt=receipt_content)
+    else:
+        flash("Error generating receipt file. Try again.")
+        return redirect(url_for('cart'))
 
 @app.route('/shop')
 def shop():
