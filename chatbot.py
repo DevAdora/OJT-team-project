@@ -241,7 +241,6 @@ class GroceryStoreRecommender:
                 print(f"Expanded Query: {expanded_query}\nExtracted: {extracted}\nFallback Product Recommendations: {product_recommendations}\n")
         
         # Step 5: Combine domain and product recommendations.
-        #
         final_recommendations = domain_recommendations + product_recommendations
         final_recommendations = list(dict.fromkeys(final_recommendations))
         print(f"Final Recommendations: {final_recommendations}\n")
