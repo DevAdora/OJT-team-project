@@ -14,9 +14,20 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='css/style.css') }}"
     />
+  <style>
+      .navbar {
+  border: 1px solid #27312a;
+  width: 97.5%;
+  margin: 1rem;
+  border-radius: 10px;
+  padding: 0.8rem;
+  z-index: 1000;
+  position: static !important;;
+}
+  </style>
   </head>
   <body class="bg-light">
-    <div class="navbar navbar-light bg-light px-3">
+    <div class="navbar navbar-light bg-light px-3 ">
       <a class="navbar-brand" href="{{ url_for('menu') }}">Fresh Insights</a>
       <form class="form-inline">
         <input
@@ -51,9 +62,10 @@
         </ul>
       </div>
     </div>
-    <div class="container shop-container">  
+    <div class="container shop-container ">  
       <a href="{{ url_for('menu') }}" class="btn btn-outline-dark">&larr; Searchbot</a>
-  </div>
+        </div>
+
     <div class="chatbot-container">
       <div class="container my-5">
         <h1 class="text-center">Fresh Insights Bot</h1>
