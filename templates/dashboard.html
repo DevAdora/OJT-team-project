@@ -84,12 +84,49 @@
               <th>ID</th>
               <th>Customer</th>
               <th>Date</th>
-              <th>Items</th>
               <th>Actions</th>
             </tr>
           </thead>
           <tbody id="purchaseHistory"></tbody>
         </table>
+      </div>
+    </div>
+    <!-- Receipt Modal -->
+    <div
+      class="modal fade"
+      id="receiptModal"
+      tabindex="-1"
+      aria-labelledby="receiptModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="receiptModalLabel">Purchase Receipt</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p><strong>Customer:</strong> <span id="modalCustomer"></span></p>
+            <p><strong>Date:</strong> <span id="modalDate"></span></p>
+            <p><strong>Items Purchased:</strong></p>
+            <ul id="modalItems"></ul>
+            <p><strong>Total:</strong> <span id="modalTotal"></span></p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -234,7 +271,6 @@
                 <td>${index + 1}</td>
                 <td>${username}</td>
                 <td>${date}</td>
-                <td>${items}</td>
                 <td>
                   <button class="btn btn-primary btn-sm" onclick="viewReceipt('${
                     purchase.filename
@@ -291,7 +327,34 @@
             allItemsList.innerHTML = `<p>Error: ${error.message}</p>`;
           });
       }
+      function viewReceipt(filename) {
+        fetch(`/get_receipt/${filename}`)
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.error) {
+              alert("Error: " + data.error);
+              return;
+            }
 
+            // Populate modal with receipt details
+            document.getElementById("modalCustomer").innerText = data.customer;
+            document.getElementById("modalDate").innerText = data.date;
+            document.getElementById("modalItems").innerHTML = data.items
+              .map((item) => `<li>${item}</li>`)
+              .join("");
+            document.getElementById("modalTotal").innerText = "₱" + data.total;
+
+            // Show the modal
+            var receiptModal = new bootstrap.Modal(
+              document.getElementById("receiptModal")
+            );
+            receiptModal.show();
+          })
+          .catch((error) => {
+            console.error("Error fetching receipt:", error);
+            alert("Failed to load receipt.");
+          });
+      }
       function viewItemsByCategory() {
         hideAllSections();
         document.getElementById("categoryView").style.display = "block";
