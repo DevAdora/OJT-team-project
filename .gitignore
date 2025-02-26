@@ -18,3 +18,5 @@ Thumbs.db
 
 # Ignore purchases directory
 purchases/
+
+static/images/*

@@ -1,249 +1,376 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin Dashboard</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f5f5f5;
-        }
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        .card {
-            background: white;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .menu-option {
-            display: block;
-            width: 100%;
-            padding: 15px;
-            margin: 10px 0;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-            text-align: left;
-        }
-        .menu-option:hover {
-            background-color: #0056b3;
-        }
-        .back-btn {
-            background-color: #6c757d;
-            margin-top: 20px;
-        }
-        .content-area {
-            display: none;
-        }
-        .active {
-            display: block;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th, td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        .btn {
-            padding: 8px 16px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            margin: 5px;
-        }
-        .btn-primary { background-color: #007bff; color: white; }
-        .btn-danger { background-color: #dc3545; color: white; }
-        .btn-secondary { background-color: #6c757d; color: white; }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="header">
-            <h1>Admin Menu</h1>
-            <button class="btn btn-danger" onclick="logout()">Logout</button>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/admin.css') }}"
+    />
+    <style></style>
+  </head>
+  <body>
+    <div class="sidebar">
+      <h3>Fresh Insights</h3>
+      <a href="#" onclick="showPurchaseList()">Purchase List</a>
+      <a href="#" onclick="showItemsMenu()">View Items</a>
+      <a href="#" onclick="showAddUpdateItems()">Add Items</a>
+      <a href="#" onclick="logout()">Logout</a>
+    </div>
+    <div class="navbar navbar-light bg-light px-3">
+      <form class="form-inline">
+        <input
+          class="form-control mr-sm-2"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+        />
+      </form>
+      <div class="dropdown">
+        <button
+          class="btn btn-light dropdown-toggle"
+          type="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          Welcome, admin
+        </button>
+        <ul class="dropdown-menu">
+          <li>
+            <a class="dropdown-item" href="{{ url_for('home') }}">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- Purchase List Section -->
+    <div id="purchaseList" class="card content-area content">
+      <div class="d-flex justify-content-between align-items-center">
+        <h2>Purchase List</h2>
+        <input
+          type="search"
+          id="searchPurchase"
+          class="form-control w-25"
+          placeholder="Search"
+          onkeyup="filterPurchases()"
+        />
+      </div>
+      <div class="table-container mt-3">
+        <div class="d-flex justify-content-between">
+          <h4>All Orders</h4>
+          <div>
+            <input
+              type="date"
+              id="startDate"
+              class="form-control d-inline w-auto"
+            />
+            to
+            <input
+              type="date"
+              id="endDate"
+              class="form-control d-inline w-auto"
+              onchange="filterPurchases()"
+            />
+          </div>
         </div>
+        <table class="table mt-3">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Customer</th>
+              <th>Date</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="purchaseHistory"></tbody>
+        </table>
+      </div>
+    </div>
+    <!-- Receipt Modal -->
+    <div
+      class="modal fade"
+      id="receiptModal"
+      tabindex="-1"
+      aria-labelledby="receiptModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="receiptModalLabel">Purchase Receipt</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p><strong>Customer:</strong> <span id="modalCustomer"></span></p>
+            <p><strong>Date:</strong> <span id="modalDate"></span></p>
+            <p><strong>Items Purchased:</strong></p>
+            <ul id="modalItems"></ul>
+            <p><strong>Total:</strong> <span id="modalTotal"></span></p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
 
-        <!-- Main Menu -->
-        <div id="mainMenu" class="card">
-            <button class="menu-option" onclick="showPurchaseList()">1. Purchase List</button>
-            <button class="menu-option" onclick="showItemsMenu()">2. Available items on sale</button>
-        </div>
+    <div id="categoryView" class="card content-area">
+      <h2>Select Category to view:</h2>
+      <div id="categoryList"></div>
+      <div id="itemsList"></div>
+      <button class="menu-option back-btn" onclick="showItemsMenu()">
+        Back to Items Menu
+      </button>
+    </div>
 
-        <!-- Purchase List Section -->
-        <div id="purchaseList" class="card content-area">
-            <h2>Purchase List</h2>
-            <div id="purchaseHistory">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Receipt #</th>
-                            <th>Date</th>
-                            <th>Items</th>
-                            <th>Username</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Purchase history will be loaded here dynamically -->
-                    </tbody>
-                </table>
-            </div>
-            <button class="menu-option back-btn" onclick="showMainMenu()">Back to Main Menu</button>
-        </div>
+    <!-- Items Menu -->
+    <div id="itemsMenu" class="card content-area content">
+      <h2>Available items on sale</h2>
+      <button class="btn btn-primary" onclick="viewItemsByCategory()">
+        View by category
+      </button>
+      <button class="btn btn-success" onclick="showAddUpdateItems()">
+        Add new item
+      </button>
+      <button class="btn btn-secondary" onclick="hideAllSections()">
+        Return to Main Menu
+      </button>
+    </div>
 
-        <!-- Items Menu Section -->
-        <div id="itemsMenu" class="card content-area">
-            <h2>Available items on sale</h2>
-            <button class="menu-option" onclick="viewItemsByCategory()">1. View items by category</button>
-            <button class="menu-option" onclick="showAddUpdateItems()">2. Add new item</button>
-            <button class="menu-option back-btn" onclick="showMainMenu()">3. Return to Main Menu</button>
-        </div>
+    <!-- Add/Update Items Section -->
+    <div id="addUpdateItems" class="card content-area content">
+      <h2>Add/Update Items</h2>
+      <form id="addUpdateForm">
+        <label for="category">Category:</label>
+        <select id="category" name="category"></select>
+        <label for="item">Item:</label>
+        <input type="text" id="item" name="item" required />
+        <label for="price">Price:</label>
+        <input type="number" id="price" name="price" required />
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+      <button class="btn btn-secondary" onclick="showItemsMenu()">
+        Back to Items Menu
+      </button>
+    </div>
 
-        <!-- Category View Section -->
-        <div id="categoryView" class="card content-area">
-            <h2>Select Category to view:</h2>
-            <div id="categoryList"></div>
-            <div id="itemsList"></div>
-            <button class="menu-option back-btn" onclick="showItemsMenu()">Back to Items Menu</button>
-        </div>
-
-        <!-- Add/Update Items Section -->
-        <div id="addUpdateItems" class="card content-area">
-            <h2>Add/Update Items</h2>
-            <form id="addUpdateForm">
-                <label for="category">Category:</label>
-                <select id="category" name="category"></select>
-                <label for="item">Item:</label>
-                <input type="text" id="item" name="item" required>
-                <label for="price">Price:</label>
-                <input type="number" id="price" name="price" required>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-            <button class="menu-option back-btn" onclick="showItemsMenu()">Back to Items Menu</button>
-        </div>
-
-        <!-- Delete Items Section -->
-        <div id="deleteItems" class="card content-area">
-            <h2>Delete Items</h2>
-            <form id="deleteForm">
-                <label for="deleteCategory">Category:</label>
-                <select id="deleteCategory" name="deleteCategory" onchange="populateDeleteItems()"></select>
-                <label for="deleteItem">Item:</label>
-                <select id="deleteItem" name="deleteItem"></select>
-                <button type="submit" class="btn btn-danger">Delete</button>
-            </form>
-            <button class="menu-option back-btn" onclick="showItemsMenu()">Back to Items Menu</button>
-        </div>
+    <!-- Delete Items Section -->
+    <div id="deleteItems" class="card content-area content">
+      <h2>Delete Items</h2>
+      <form id="deleteForm">
+        <label for="deleteCategory">Category:</label>
+        <select
+          id="deleteCategory"
+          name="deleteCategory"
+          onchange="populateDeleteItems()"
+        ></select>
+        <label for="deleteItem">Item:</label>
+        <select id="deleteItem" name="deleteItem"></select>
+        <button type="submit" class="btn btn-danger">Delete</button>
+      </form>
+      <button class="btn btn-secondary" onclick="showItemsMenu()">
+        Back to Items Menu
+      </button>
+      <form id="deleteForm" onsubmit="deleteSelectedItem(event)">
+        <label for="deleteCategory">Category:</label>
+        <select
+          id="deleteCategory"
+          name="deleteCategory"
+          onchange="populateDeleteItems()"
+        ></select>
+        <label for="deleteItem">Item:</label>
+        <select id="deleteItem" name="deleteItem"></select>
+        <button type="submit" class="btn btn-danger">Delete</button>
+      </form>
     </div>
 
     <script>
-        function showMainMenu() {
-            hideAllSections();
-            document.getElementById('mainMenu').style.display = 'block';
-        }
+      function showMainMenu() {
+        hideAllSections();
+        document.getElementById("mainMenu").style.display = "block";
+      }
+      function filterPurchases() {
+        const searchQuery = document
+          .getElementById("searchPurchase")
+          .value.toLowerCase();
+        const startDate = document.getElementById("startDate").value;
+        const endDate = document.getElementById("endDate").value;
 
-        function showPurchaseList() {
-            hideAllSections();
-            document.getElementById('purchaseList').style.display = 'block';
-            fetch('/get_purchases', {
-                credentials: 'include'
-            })
-                .then(response => {
-                    if (!response.ok) {
-                        if (response.status === 401) {
-                            window.location.replace('/');
-                            throw new Error('Please log in to view purchases');
-                        }
-                        throw new Error(`HTTP error! status: ${response.status}`);
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    const purchaseHistory = document.getElementById('purchaseHistory').getElementsByTagName('tbody')[0];
-                    if (data.purchases && Array.isArray(data.purchases)) {
-                        purchaseHistory.innerHTML = data.purchases.map(purchase => {
-                            const parts = purchase.filename.split('.');
-                            const username = parts[0];
-                            const date = parts[1].replace(/(\d{4})(\d{2})(\d{2})/, '$1-$2-$3');
-                            const orderNum = parts[2];
-                            const items = purchase.items.join(', ');
-                            
-                            return `
-                                <tr>
-                                    <td>${orderNum}</td>
-                                    <td>${date}</td>
-                                    <td>${items}</td>
-                                    <td>${username}</td>
-                                    <td>
-                                        <button class="btn btn-primary" onclick="viewReceipt('${purchase.filename}')">View</button>
-                                    </td>
-                                </tr>
-                            `;
-                        }).join('');
-                    } else {
-                        purchaseHistory.innerHTML = '<tr><td colspan="5">No purchases found</td></tr>';
-                    }
-                })
-                .catch(error => {
-                    console.error('Error fetching purchases:', error);
-                    const purchaseHistory = document.getElementById('purchaseHistory').getElementsByTagName('tbody')[0];
-                    purchaseHistory.innerHTML = `<tr><td colspan="5">Error: ${error.message}</td></tr>`;
-                });
-        }
+        fetch("/get_purchases", { credentials: "include" })
+          .then((response) => {
+            if (!response.ok) {
+              if (response.status === 401) {
+                window.location.replace("/");
+                throw new Error("Please log in to view purchases");
+              }
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+          })
+          .then((data) => {
+            const purchaseHistory = document.getElementById("purchaseHistory");
+            purchaseHistory.innerHTML = ""; // Clear old data
 
-        function showItemsMenu() {
-            hideAllSections();
-            document.getElementById('itemsMenu').style.display = 'block';
-            fetch('/get_all_categories')
-                .then(response => response.json())
-                .then(data => {
-                    const categoryList = document.getElementById('categoryList');
-                    categoryList.innerHTML = data.items.map(category => `
+            if (data.purchases && Array.isArray(data.purchases)) {
+              const filteredPurchases = data.purchases.filter((purchase) => {
+                const parts = purchase.filename.split(".");
+                const dateStr = parts[1].replace(
+                  /(\d{4})(\d{2})(\d{2})/,
+                  "$1-$2-$3"
+                );
+                const username = parts[0].toLowerCase();
+                const items = purchase.items.join(", ").toLowerCase();
+
+                const purchaseDate = new Date(dateStr);
+                const start = startDate ? new Date(startDate) : null;
+                const end = endDate ? new Date(endDate) : null;
+
+                const matchesDate =
+                  (!start || purchaseDate >= start) &&
+                  (!end || purchaseDate <= end);
+
+                const matchesSearch =
+                  username.includes(searchQuery) || items.includes(searchQuery);
+
+                return matchesDate && matchesSearch;
+              });
+
+              if (filteredPurchases.length === 0) {
+                purchaseHistory.innerHTML =
+                  '<tr><td colspan="5">No matching purchases found</td></tr>';
+                return;
+              }
+
+              filteredPurchases.forEach((purchase, index) => {
+                const parts = purchase.filename.split(".");
+                const username = parts[0];
+                const date = parts[1].replace(
+                  /(\d{4})(\d{2})(\d{2})/,
+                  "$1-$2-$3"
+                );
+                const items = purchase.items.join(", ");
+
+                const row = `
+              <tr>
+                <td>${index + 1}</td>
+                <td>${username}</td>
+                <td>${date}</td>
+                <td>
+                  <button class="btn btn-primary btn-sm" onclick="viewReceipt('${
+                    purchase.filename
+                  }')">View</button>
+                </td>
+              </tr>
+            `;
+                purchaseHistory.innerHTML += row;
+              });
+            } else {
+              purchaseHistory.innerHTML =
+                '<tr><td colspan="5">No purchases found</td></tr>';
+            }
+          })
+          .catch((error) => {
+            console.error("Error fetching purchases:", error);
+            document.getElementById(
+              "purchaseHistory"
+            ).innerHTML = `<tr><td colspan="5">Error: ${error.message}</td></tr>`;
+          });
+      }
+
+      document
+        .getElementById("startDate")
+        .addEventListener("change", filterPurchases);
+      document
+        .getElementById("endDate")
+        .addEventListener("change", filterPurchases);
+
+      function showPurchaseList() {
+        hideAllSections();
+        document.getElementById("purchaseList").style.display = "block";
+        filterPurchases();
+      }
+
+      function showItemsMenu() {
+        hideAllSections();
+        document.getElementById("itemsMenu").style.display = "block";
+        fetch("/get_all_categories")
+          .then((response) => response.json())
+          .then((data) => {
+            const categoryList = document.getElementById("categoryList");
+            categoryList.innerHTML = data.items
+              .map(
+                (category) => `
                         <button class="btn btn-primary" onclick="showCategoryItems('${category}')">${category}</button>
-                    `).join('');
-                })
-                .catch(error => {
-                    console.error('Error fetching items:', error);
-                    const allItemsList = document.getElementById('allItemsList');
-                    allItemsList.innerHTML = `<p>Error: ${error.message}</p>`;
-                });
-        }
+                    `
+              )
+              .join("");
+          })
+          .catch((error) => {
+            console.error("Error fetching items:", error);
+            const allItemsList = document.getElementById("allItemsList");
+            allItemsList.innerHTML = `<p>Error: ${error.message}</p>`;
+          });
+      }
+      function viewReceipt(filename) {
+        fetch(`/get_receipt/${filename}`)
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.error) {
+              alert("Error: " + data.error);
+              return;
+            }
 
-        function viewItemsByCategory() {
-            hideAllSections();
-            document.getElementById('categoryView').style.display = 'block';
-        }
+            // Populate modal with receipt details
+            document.getElementById("modalCustomer").innerText = data.customer;
+            document.getElementById("modalDate").innerText = data.date;
+            document.getElementById("modalItems").innerHTML = data.items
+              .map((item) => `<li>${item}</li>`)
+              .join("");
+            document.getElementById("modalTotal").innerText = "₱" + data.total;
 
-        function showCategoryItems(category) {
-            fetch(`/get_items/${category}`)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    const itemsList = document.getElementById('itemsList');
-                    itemsList.innerHTML = `
+            // Show the modal
+            var receiptModal = new bootstrap.Modal(
+              document.getElementById("receiptModal")
+            );
+            receiptModal.show();
+          })
+          .catch((error) => {
+            console.error("Error fetching receipt:", error);
+            alert("Failed to load receipt.");
+          });
+      }
+      function viewItemsByCategory() {
+        hideAllSections();
+        document.getElementById("categoryView").style.display = "block";
+      }
+
+      function showCategoryItems(category) {
+        fetch(`/get_items/${category}`)
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+          })
+          .then((data) => {
+            const itemsList = document.getElementById("itemsList");
+            itemsList.innerHTML = `
                         <h3>${category}</h3>
                         <table>
                             <thead>
@@ -253,7 +380,9 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                ${data.items.map(item => `
+                                ${data.items
+                                  .map(
+                                    (item) => `
                                     <tr>
                                         <td>${item}</td>
                                         <td>
@@ -261,101 +390,123 @@
                                             <button class="btn btn-danger" onclick="deleteItem('${category}', '${item}')">Delete</button>
                                         </td>
                                     </tr>
-                                `).join('')}
+                                `
+                                  )
+                                  .join("")}
                             </tbody>
                         </table>
                     `;
-                })
-                .catch(error => {
-                    console.error('Error fetching items:', error);
-                    const itemsList = document.getElementById('itemsList');
-                    itemsList.innerHTML = `<p>Error: ${error.message}</p>`;
-                });
-        }
+          })
+          .catch((error) => {
+            console.error("Error fetching items:", error);
+            const itemsList = document.getElementById("itemsList");
+            itemsList.innerHTML = `<p>Error: ${error.message}</p>`;
+          });
+      }
 
-        function showAddUpdateItems() {
-            hideAllSections();
-            document.getElementById('addUpdateItems').style.display = 'block';
-            fetch('/get_all_categories')
-                .then(response => response.json())
-                .then(data => {
-                    const categorySelect = document.getElementById('category');
-                    categorySelect.innerHTML = data.items.map(category => `
+      function showAddUpdateItems() {
+        hideAllSections();
+        document.getElementById("addUpdateItems").style.display = "block";
+        fetch("/get_all_categories")
+          .then((response) => response.json())
+          .then((data) => {
+            const categorySelect = document.getElementById("category");
+            categorySelect.innerHTML = data.items
+              .map(
+                (category) => `
                         <option value="${category}">${category}</option>
-                    `).join('');
-                })
-                .catch(error => console.error('Error fetching categories:', error));
-        }
+                    `
+              )
+              .join("");
+          })
+          .catch((error) => console.error("Error fetching categories:", error));
+      }
 
-        function deleteItem(category, item) {
-            if (confirm(`Are you sure you want to delete the item '${item}' from category '${category}'?`)) {
-                fetch('/delete_item', {
-                    method: 'POST',
-                    body: JSON.stringify({ deleteCategory: category, deleteItem: item }),
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                })
-                    .then(response => response.json())
-                    .then(data => {
-                        alert(data.message);
-                        showCategoryItems(category);
-                    })
-                    .catch(error => console.error('Error deleting item:', error));
-            }
-        }
-
-        function editItem(category, item) {
-            const [item_name, item_price] = item.split(', ');
-            const newItem = prompt(`Edit item '${item_name}':`, item_name);
-            if (newItem !== null && newItem !== item) {
-                const price = prompt(`Enter price for '${newItem}':`, item_price);
-                if (price !== null) {
-                    fetch('/edit_item', {
-                        method: 'POST',
-                        body: JSON.stringify({ category: category, oldItem: item, newItem: newItem, price: price }),
-                        headers: {
-                            'Content-Type': 'application/json'
-                        }
-                    })
-                        .then(response => response.json())
-                        .then(data => {
-                            alert(data.message);
-                            showCategoryItems(category);
-                        })
-                        .catch(error => console.error('Error updating item:', error));
-                }
-            }
-        }
-
-        function hideAllSections() {
-            const sections = document.getElementsByClassName('content-area');
-            for (let section of sections) {
-                section.style.display = 'none';
-            }
-        }
-
-        function logout() {
-            window.location.href = '/logout';
-        }
-
-        document.getElementById('addUpdateForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const formData = new FormData(event.target);
-            fetch('/add_update_item', {
-                method: 'POST',
-                body: JSON.stringify(Object.fromEntries(formData)),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
+      function deleteItem(category, item) {
+        if (
+          confirm(
+            `Are you sure you want to delete the item '${item}' from category '${category}'?`
+          )
+        ) {
+          fetch("/delete_item", {
+            method: "POST",
+            body: JSON.stringify({
+              deleteCategory: category,
+              deleteItem: item,
+            }),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              alert(data.message);
+              showCategoryItems(category);
             })
-                .then(response => response.json())
-                .then(data => {
-                    alert(data.message);
-                    showItemsMenu();
-                })
-                .catch(error => console.error('Error adding/updating item:', error));
+            .catch((error) => console.error("Error deleting item:", error));
+        }
+      }
+
+      function editItem(category, item) {
+        const [item_name, item_price] = item.split(", ");
+        const newItem = prompt(`Edit item '${item_name}':`, item_name);
+        if (newItem !== null && newItem !== item) {
+          const price = prompt(`Enter price for '${newItem}':`, item_price);
+          if (price !== null) {
+            fetch("/edit_item", {
+              method: "POST",
+              body: JSON.stringify({
+                category: category,
+                oldItem: item,
+                newItem: newItem,
+                price: price,
+              }),
+              headers: {
+                "Content-Type": "application/json",
+              },
+            })
+              .then((response) => response.json())
+              .then((data) => {
+                alert(data.message);
+                showCategoryItems(category);
+              })
+              .catch((error) => console.error("Error updating item:", error));
+          }
+        }
+      }
+
+      function hideAllSections() {
+        const sections = document.getElementsByClassName("content-area");
+        for (let section of sections) {
+          section.style.display = "none";
+        }
+      }
+
+      function logout() {
+        window.location.href = "/logout";
+      }
+
+      document
+        .getElementById("addUpdateForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          const formData = new FormData(event.target);
+          fetch("/add_update_item", {
+            method: "POST",
+            body: JSON.stringify(Object.fromEntries(formData)),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              alert(data.message);
+              showItemsMenu();
+            })
+            .catch((error) =>
+              console.error("Error adding/updating item:", error)
+            );
         });
     </script>
-</body>
+  </body>
 </html>

@@ -88,6 +88,45 @@ def add_to_cart():
         flash("Quantity not provided!")
         return jsonify({"message": "Quantity not provided!"}), 400
     
+@app.route('/get_receipt/<filename>')
+def get_receipt(filename):
+    folder_path = "purchases"  # Folder where receipt files are stored
+    file_path = os.path.join(folder_path, filename)
+
+    if not os.path.exists(file_path):
+        return jsonify({"error": "Receipt not found"}), 404
+
+    try:
+        with open(file_path, "r", encoding="utf-8") as file:
+            lines = file.readlines()
+
+        if len(lines) < 3:
+            return jsonify({"error": "Invalid receipt format"}), 400
+
+        # Extract customer name from filename (e.g., "tiki.20250226.txt" -> "tiki")
+        customer = filename.split(".")[0]
+        date = filename.split(".")[1]  # Extract date part from filename
+        formatted_date = f"{date[:4]}-{date[4:6]}-{date[6:]}"  # Convert to YYYY-MM-DD
+
+        items = []
+        total = "0"
+
+        for line in lines[2:]:  # Skip the first two lines
+            line = line.strip()
+            if line.startswith("- "):  # Item purchased
+                items.append(line[2:])  # Remove "- " prefix
+            elif line.lower().startswith("total:"):  # Extract total
+                total = line.split("₱")[1].strip()
+
+        return jsonify({
+            "customer": customer,
+            "date": formatted_date,
+            "items": items,
+            "total": total
+        })
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 @app.route('/menu')
 def menu():
     username = session.get('username')
