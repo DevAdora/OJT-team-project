@@ -21,7 +21,7 @@ pop-tarts, 25
 rice cakes, 20
 corn tortillas, 18
 flour tortillas, 20
-naan, 22
+nana, 20
 soda, 10
 misc. beverages, 15
 liquor (appetizer), 50
@@ -209,7 +209,7 @@ olives, 12
 capers, 15
 sun-dried tomatoes, 18
 artichoke hearts, 20
-roasted red peppers, 18
+roasted red peppers, 25
 soap, 5
 hygiene articles, 10
 make up remover, 15
