@@ -150,7 +150,7 @@ def checkout():
     if success:
         flash("Checkout successful! Receipt has been saved.")
         user_carts.pop(username, None)  # Clear the cart after checkout
-        return render_template('checkout.html', receipt=receipt_content)
+        return render_template('checkout.html', receipt=receipt_content, username=username)
     else:
         flash("Error generating receipt file. Try again.")
         return redirect(url_for('cart'))

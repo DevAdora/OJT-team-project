@@ -1,0 +1,220 @@
+# --- Product-Specific Synonyms with Domain Keyword ---
+soda: soft drink, pop, beverages
+pita: flatbread, middle eastern bread, bakery
+beef: steak, red meat, meats
+chicken: poultry, white meat, meats
+bread: loaf, baked goods, bakery
+baguette: french bread, long bread, bakery
+croissants: pastry, flaky bread, bakery
+muffins: baked goods, breakfast treat, bakery
+donuts: doughnuts, fried pastry, bakery
+biscotti: italian cookie, coffee biscuit, bakery
+crackers: snack biscuits, dry snack, bakery
+pretzels: salted snack, twisted snack, bakery
+pop-tarts: toaster pastry, filled pastry, bakery
+rice cakes: rice snack, puffed rice, bakery
+corn tortillas: maize tortillas, taco shell, bakery
+flour tortillas: wheat tortillas, burrito wrap, bakery
+naan: indian bread, tandoori bread, bakery
+liquor: spirits, alcoholic beverage, beverages
+whisky: whiskey, aged liquor, beverages
+brandy: distilled wine, fruit liquor, beverages
+prosecco: sparkling wine, italian wine, beverages
+coffee: brewed coffee, caffeine drink, beverages
+tea: herbal tea, black tea, beverages
+protein powder: supplement, fitness powder, supplements
+oat milk: plant milk, dairy alternative, dairy
+soy milk: plant milk, soy-based milk, dairy
+almond milk: plant milk, nut milk, dairy
+hazelnut milk: nut milk, creamy milk, dairy
+yogurt: fermented dairy, probiotic food, dairy
+hard cheese: aged cheese, firm cheese, dairy
+spread cheese: soft cheese, creamy cheese, dairy
+soft cheese: fresh cheese, mild cheese, dairy
+processed cheese: cheese product, melted cheese, dairy
+condensed milk: sweetened milk, thick milk, dairy
+butter milk: cultured dairy, tangy milk, dairy
+frozen dessert: ice cream, frozen treat, frozen
+frozen vegetables: frozen produce, preserved vegetables, frozen
+root vegetables: tubers, underground vegetables, frozen
+tropical fruit: exotic fruit, warm-climate fruit, fruits
+citrus fruit: vitamin C fruit, tangy fruit, fruits
+berries: small fruit, antioxidant fruit, fruits
+strawberries: red berries, summer fruit, fruits
+blueberries: superfood berries, nutrient-rich berries, fruits
+raspberries: tart berries, bright red fruit, fruits
+blackberries: dark berries, juicy fruit, fruits
+cranberries: tangy berries, holiday fruit, fruits
+pitted dates: dried fruit, sweet dates, fruits
+cooking chocolate: baking chocolate, cocoa-based chocolate, sweets
+instant coffee: soluble coffee, quick coffee, beverages
+spices: seasonings, dried herbs, misc
+mustard: condiment, yellow sauce, misc
+honey: natural sweetener, bee product, misc
+cocoa drinks: hot chocolate, warm beverage, sweets
+muesli: granola, cereal mix, misc
+almonds: tree nuts, crunchy nuts, misc
+cashews: kidney nuts, buttery nuts, misc
+walnuts: brain nuts, omega-3 nuts, misc
+pecans: buttery nuts, pie nuts, misc
+hazelnuts: filbert nuts, round nuts, misc
+pumpkin seeds: pepitas, edible seeds, misc
+sunflower seeds: edible seeds, crunchy seeds, misc
+chia seeds: superfood seeds, omega-3 seeds, misc
+quinoa: protein grain, ancient grain, misc
+couscous: semolina pasta, tiny pasta, misc
+barley: cereal grain, fibrous grain, misc
+rolled oats: oat flakes, breakfast grain, misc
+pasta: noodles, italian staple, pasta
+marinara sauce: tomato sauce, pasta sauce, pasta
+alfredo sauce: creamy sauce, white sauce, pasta
+pesto: basil sauce, green sauce, pasta
+tapenade: olive spread, mediterranean paste, pasta
+guacamole: avocado spread, mexican dip, pasta
+hummus: chickpea dip, middle eastern dip, pasta
+salsa verde: green sauce, tangy sauce, pasta
+bbq sauce: barbecue sauce, smoky sauce, pasta
+soy sauce: fermented soy, asian sauce, pasta
+balsamic vinegar: aged vinegar, italian dressing, pasta
+sesame oil: nutty oil, cooking oil, pasta
+hot sauce: spicy sauce, chili sauce, pasta
+pickles: fermented cucumbers, brined vegetables, misc
+olives: brined fruit, mediterranean fruit, misc
+capers: pickled buds, seasoning buds, misc
+artichoke hearts: edible thistle, mediterranean vegetable, pasta
+roasted red peppers: grilled peppers, smoky peppers, pasta
+chocolate: cocoa sweet, dark chocolate, sweets
+candy: confectionery, sugary treat, sweets
+dessert: sweet dish, after-meal treat, sweets
+snack products: quick bites, light food, sweets
+salty snack: savory snack, crunchy snack, sweets
+ice cream: frozen treat, dairy dessert, sweets
+protein bars: energy bars, fitness snack, sweets
+
+white bread: light bread, wheat bread, bakery
+brown bread: whole wheat bread, multigrain bread, bakery
+rolls/buns: dinner rolls, buns, bakery
+roll products: bakery rolls, soft rolls, bakery
+semi-finished bread: pre-baked bread, ready bread, bakery
+long life bakery product: shelf-stable bread, extended shelf bread, bakery
+bagels: ring bread, boiled bread, bakery
+ciabatta bread: italian ciabatta, rustic bread, bakery
+sourdough bread: fermented bread, tangy bread, bakery
+focaccia: italian flatbread, herb focaccia, bakery
+danish pastries: danish, fruit pastry, bakery
+misc. beverages: assorted drinks, mixed beverages, beverages
+liquor (appetizer): aperitif liquor, starter liquor, beverages
+liqueur: dessert liquor, sweet liquor, beverages
+rum: spiced rum, dark rum, beverages
+red/blush wine: rosé wine, red wine, beverages
+fruit/vegetable juice: fresh juice, natural juice, beverages
+coconut water: coco water, tropical water, beverages
+energy drink: sports drink, energizer, beverages
+kombucha: probiotic tea, fermented tea, beverages
+iced tea: cold tea, chilled tea, beverages
+sparkling water: fizzy water, soda water, beverages
+mineral water: spring water, natural water, beverages
+lemonade: lemon drink, citrus soda, beverages
+apple cider: cider, apple juice, beverages
+hard cider: dry cider, fermented cider, beverages
+UHT-milk: long-life milk, shelf-stable milk, dairy
+whipped/sour cream: whipped cream, sour cream, dairy
+cream cheese: cheese spread, soft cream cheese, dairy
+curd: dairy curd, milk curd, dairy
+domestic eggs: table eggs, chicken eggs, dairy
+frozen chicken: frozen poultry, chicken fillet, frozen
+frozen potato products: frozen fries, potato bites, frozen
+frozen meals: ready meals, frozen dinners, frozen
+frozen fish: frozen seafood, fish fillets, frozen
+packaged fruit/vegetables: prepacked produce, packaged produce, frozen
+frozen fruits: frozen berries, frozen produce, frozen
+pip fruit: pitted fruit, small fruits, frozen
+other vegetables: assorted vegetables, mixed vegetables, vegetables
+citrus fruit: vitamin C fruit, tangy fruit, fruits
+tropical fruit: exotic fruit, warm-climate fruit, fruits
+berries: small fruit, antioxidant fruit, fruits
+onions: bulb onions, allium, vegetables
+pot plants: potted plants, indoor plants, garden
+specialty vegetables: exotic vegetables, gourmet vegetables, vegetables
+flower (seeds): flower seeds, blossom seeds, garden
+avocado: alligator pear, butter fruit, fruits
+banana: plantain, yellow fruit, fruits
+apple: red apple, green apple, fruits
+pear: asian pear, anjou pear, fruits
+kiwi fruit: kiwi, fuzzy fruit, fruits
+mango: tropical mango, sweet mango, fruits
+pineapple: ananas, tropical pineapple, fruits
+pomegranate: ruby fruit, arils fruit, fruits
+blueberries: blue berry, small berries, fruits
+strawberries: garden berries, red strawberries, fruits
+raspberries: red raspberries, tart berries, fruits
+blackberries: black berries, wild blackberries, fruits
+cranberries: cranberry, sour berries, fruits
+figs: fig fruit, sweet figs, fruits
+apricots: apricot, dried apricot, fruits
+peaches: peach, fuzzy peach, fruits
+plums: plum, juicy plum, fruits
+nectarines: nectarine, smooth peach, fruits
+cherries: cherry, red cherries, fruits
+persimmons: persimmon, sweet persimmon, fruits
+baby carrots: mini carrots, small carrots, vegetables
+cherry tomatoes: grape tomatoes, sweet tomatoes, vegetables
+cucumber: slicing cucumber, salad cucumber, vegetables
+shopping bags: tote bags, reusable bags, household
+cling film/bags: plastic wrap, cling film, household
+light bulbs: bulbs, LED bulbs, household
+kitchen utensil: cooking tool, kitchen gadget, household
+seasonal products: seasonal items, holiday products, household
+cleaner: cleaning agent, detergent cleaner, household
+bathroom cleaner: toilet cleaner, bathroom spray, household
+house keeping products: household cleaning, home care products, household
+kitchen towels: dish towels, kitchen cloths, household
+dish cleaner: dish soap, dish detergent, household
+abrasive cleaner: scrubber, heavy-duty cleaner, household
+toilet cleaner: bathroom cleaner, toilet bowl cleaner, household
+dishes: crockery, tableware, household
+cookware: kitchenware, cooking pots, household
+decalcifier: descaler, scale remover, household
+detergent: laundry detergent, cleaning detergent, household
+meat spreads: pâté, spreadable meat, meats
+hamburger meat: ground beef, minced beef, meats
+pork: pig meat, sow meat, meats
+frankfurter: frankfurter sausage, wiener, meats
+turkey: turkey meat, roast turkey, meats
+sausage: sausages, link sausage, meats
+fish: seafood, ocean catch, meats
+meat: protein meat, animal meat, meats
+cat food: pet food, feline food, pet
+dog food: canine food, pet chow, pet
+napkins: serviettes, paper towels, household
+specialty cheese: gourmet cheese, artisanal cheese, dairy
+pot plants: potted plants, indoor plants, garden
+organic sausage: organic meat sausage, natural sausage, meats
+organic products: organic food, natural products, misc
+pet care: pet supplies, animal care, pet
+newspapers: newsprint, daily papers, misc
+tidbits: snack bites, small treats, sweets
+cooking chocolate: baking chocolate, cocoa-based chocolate, sweets
+ready soups: instant soup, pre-made soup, misc
+jam: fruit jam, preserve, misc
+canned fruit: tinned fruit, preserved fruit, misc
+specialty fat: gourmet fat, premium fat, misc
+oil: cooking oil, edible oil, misc
+herbs: fresh herbs, culinary herbs, misc
+baking powder: leavening agent, rising agent, misc
+flour: all-purpose flour, plain flour, misc
+cereals: breakfast cereal, morning cereal, misc
+preservation products: preservatives, preservation agents, misc
+canned fish: tinned fish, preserved fish, misc
+mayonnaise: mayo, sandwich spread, misc
+rice: steamed rice, boiled rice, misc
+sugar: granulated sugar, white sugar, misc
+salt: table salt, cooking salt, misc
+sauces: condiments, liquid condiments, misc
+curd cheese: cheese curd, fresh curd, dairy
+pudding powder: instant pudding, dessert mix, misc
+artif. sweetener: artificial sweetener, sugar substitute, misc
+instant food products: instant meals, ready-to-eat meals, misc
+bulgur wheat: cracked wheat, bulgur, misc
+quinoa pasta: gluten-free pasta, quinoa noodles, misc
+gnocchi: potato dumplings, Italian dumplings, pasta

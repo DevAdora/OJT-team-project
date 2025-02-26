@@ -11,9 +11,6 @@
 <body class="bg-light">
     <nav class="navbar navbar-light bg-light px-3">
         <a class="navbar-brand" href="{{ url_for('menu') }}">Fresh Insights</a>
-        <form class="form-inline">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        </form>
         <div class="dropdown">
             <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Welcome, {{ username }}
@@ -26,14 +23,21 @@
         </div>
     </nav>
     
+    <div class="container shop-container">  
+        <a href="{{ url_for('menu') }}" class="btn btn-outline-dark">&larr; Searchbot</a>
+    </div>
+
     <div class="container my-5">
         <h1 class="text-center">Fresh Insights Bot</h1>
         <div class="card p-3">
             <div class="mb-3">
-                <input type="text" id="chatInput" class="form-control" placeholder="Ask anything...">
+                <input type="text" id="chatInput" class="form-control" placeholder="Anything you want to buy?">
             </div>
             <button class="btn btn-success" onclick="sendMessage()">Send</button>
             <div id="chatResponse" class="mt-3"></div>
+        </div>
+        <div class="alert alert-info mt-3" role="alert">
+            Note: Our friendly product search assistant, <i><b>Fresh Insights Bot</b></i>, is here to help you. Feel free to search for any product you want. Please be aware that the bot is not perfect, and you might encounter some search bugs or failed search results.
         </div>
     </div>
 
