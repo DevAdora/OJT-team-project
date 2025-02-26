@@ -22,8 +22,4 @@
    git clone https://github.com/yourusername/ojt-team-project.git
 2. Install the needed dependencies or modules:
    ```bash
-   - pip install sentence-transformers
-   - py -m pip install sentence-transformers
-   - pip install numpy
-   - py -m pip install numpy
-   - py -m pip install rich
+   - pip install -r requirements.txt
