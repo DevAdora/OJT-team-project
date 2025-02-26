@@ -1,55 +1,55 @@
 +++++++++++++++++++++++
 
-Project: FreshInsights
+project: freshinsights
 
 +++++++++++++++++++++++
 
 
-For: User
+for: user
 ---------
--Login
->User (Purchase interface)
->Admin (Purchase List, Available items on sale)
+-login
+>user (purchase interface)
+>admin (purchase list, available items on sale)
 
--Options Menu
->Recommendation System
->Shop
->Cart (if there are items)
->Checkout (if there are items)
->Exit
+-options menu
+>recommendation system
+>shop
+>cart (if there are items)
+>checkout (if there are items)
+>exit
 
--Recommendation System
->Chatbot (currently: Recommendations only)
->Add to cart (save to {username}.{date}.{increment}.receipt.txt based on selection that carries over unless purchase complete or delete purchase)
->Modify cart (remove items or edit quantity)
->Check-out link (Pay)
->Exit (carries over the receipt)
+-recommendation system
+>chatbot (currently: recommendations only)
+>add to cart (save to {username}.{date}.{increment}.receipt.txt based on selection that carries over unless purchase complete or delete purchase)
+>modify cart (remove items or edit quantity)
+>check-out link (pay)
+>exit (carries over the receipt)
 
--Shop
->Categories
-->Specific items available for purchase (tuple)
-->Add to cart (save to {username}.{date}.{increment}.receipt.txt based on selection that carries over unless purchase complete or delete purchase)
-->Check-out link (Pay)
-->Exit (carries over the receipt)
+-shop
+>categories
+->specific items available for purchase (tuple)
+->add to cart (save to {username}.{date}.{increment}.receipt.txt based on selection that carries over unless purchase complete or delete purchase)
+->check-out link (pay)
+->exit (carries over the receipt)
 
--Check-out
->Pay
+-check-out
+>pay
 
-For: Admin
+for: admin
 ----------
--Login
->User (Purchase interface)
->Admin (Purchase List, Available items on sale)
+-login
+>user (purchase interface)
+>admin (purchase list, available items on sale)
 
--Options Menu
->Purchase List (show all files in the purchases folder)
->Available items on sale
-->View (category)
-->Add (category)
-->Update (category)
-->Delete (category)
+-options menu
+>purchase list (show all files in the purchases folder)
+>available items on sale
+->view (category)
+->add (category)
+->update (category)
+->delete (category)
 -------------
-Day 1:
-Main: Menu
-Class: Chatbot
+day 1:
+main: menu
+class: chatbot
 

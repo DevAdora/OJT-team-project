@@ -51,7 +51,7 @@ mineral water, 10
 lemonade, 15
 apple cider, 20
 hard cider, 25
-UHT-milk, 15
+uht-milk, 15
 whipped/sour cream, 20
 cream cheese, 25
 curd, 18
@@ -85,30 +85,30 @@ onions, 10
 pot plants, 35
 specialty vegetables, 28
 flower (seeds), 15
-Avocado, 20
-Banana, 10
-Apple, 12
-Pear, 15
-Kiwi fruit, 18
-Mango, 20
-Pineapple, 25
-Pomegranate, 30
-Blueberries, 35
-Strawberries, 30
-Raspberries, 35
-Blackberries, 35
-Cranberries, 30
-Pitted dates, 25
-Figs, 28
-Apricots, 22
-Peaches, 25
-Plums, 20
-Nectarines, 22
-Cherries, 30
-Persimmons, 28
-Baby carrots, 15
-Cherry tomatoes, 18
-Cucumber, 12
+avocado, 20
+banana, 10
+apple, 12
+pear, 15
+kiwi fruit, 18
+mango, 20
+pineapple, 25
+pomegranate, 30
+blueberries, 35
+strawberries, 30
+raspberries, 35
+blackberries, 35
+cranberries, 30
+pitted dates, 25
+figs, 28
+apricots, 22
+peaches, 25
+plums, 20
+nectarines, 22
+cherries, 30
+persimmons, 28
+baby carrots, 15
+cherry tomatoes, 18
+cucumber, 12
 shopping bags, 5
 cling film/bags, 10
 light bulbs, 15

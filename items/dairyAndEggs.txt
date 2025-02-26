@@ -1,4 +1,4 @@
-UHT-milk, 15
+uht-milk, 15
 whipped/sour cream, 20
 cream cheese, 25
 curd, 18

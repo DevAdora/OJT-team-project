@@ -1,4 +1,4 @@
-# --- Product-Specific Synonyms with Domain Keyword ---
+# --- product-specific synonyms with domain keyword ---
 soda: soft drink, pop, beverages
 pita: flatbread, middle eastern bread, bakery
 beef: steak, red meat, meats
@@ -38,7 +38,7 @@ frozen dessert: ice cream, frozen treat, frozen
 frozen vegetables: frozen produce, preserved vegetables, frozen
 root vegetables: tubers, underground vegetables, frozen
 tropical fruit: exotic fruit, warm-climate fruit, fruits
-citrus fruit: vitamin C fruit, tangy fruit, fruits
+citrus fruit: vitamin c fruit, tangy fruit, fruits
 berries: small fruit, antioxidant fruit, fruits
 strawberries: red berries, summer fruit, fruits
 blueberries: superfood berries, nutrient-rich berries, fruits
@@ -106,7 +106,7 @@ misc. beverages: assorted drinks, mixed beverages, beverages
 liquor (appetizer): aperitif liquor, starter liquor, beverages
 liqueur: dessert liquor, sweet liquor, beverages
 rum: spiced rum, dark rum, beverages
-red/blush wine: ros√© wine, red wine, beverages
+red/blush wine: ros„© wine, red wine, beverages
 fruit/vegetable juice: fresh juice, natural juice, beverages
 coconut water: coco water, tropical water, beverages
 energy drink: sports drink, energizer, beverages
@@ -117,7 +117,7 @@ mineral water: spring water, natural water, beverages
 lemonade: lemon drink, citrus soda, beverages
 apple cider: cider, apple juice, beverages
 hard cider: dry cider, fermented cider, beverages
-UHT-milk: long-life milk, shelf-stable milk, dairy
+uht-milk: long-life milk, shelf-stable milk, dairy
 whipped/sour cream: whipped cream, sour cream, dairy
 cream cheese: cheese spread, soft cream cheese, dairy
 curd: dairy curd, milk curd, dairy
@@ -130,7 +130,7 @@ packaged fruit/vegetables: prepacked produce, packaged produce, frozen
 frozen fruits: frozen berries, frozen produce, frozen
 pip fruit: pitted fruit, small fruits, frozen
 other vegetables: assorted vegetables, mixed vegetables, vegetables
-citrus fruit: vitamin C fruit, tangy fruit, fruits
+citrus fruit: vitamin c fruit, tangy fruit, fruits
 tropical fruit: exotic fruit, warm-climate fruit, fruits
 berries: small fruit, antioxidant fruit, fruits
 onions: bulb onions, allium, vegetables
@@ -162,7 +162,7 @@ cherry tomatoes: grape tomatoes, sweet tomatoes, vegetables
 cucumber: slicing cucumber, salad cucumber, vegetables
 shopping bags: tote bags, reusable bags, household
 cling film/bags: plastic wrap, cling film, household
-light bulbs: bulbs, LED bulbs, household
+light bulbs: bulbs, led bulbs, household
 kitchen utensil: cooking tool, kitchen gadget, household
 seasonal products: seasonal items, holiday products, household
 cleaner: cleaning agent, detergent cleaner, household
@@ -176,7 +176,7 @@ dishes: crockery, tableware, household
 cookware: kitchenware, cooking pots, household
 decalcifier: descaler, scale remover, household
 detergent: laundry detergent, cleaning detergent, household
-meat spreads: p√¢t√©, spreadable meat, meats
+meat spreads: p„¢t„©, spreadable meat, meats
 hamburger meat: ground beef, minced beef, meats
 pork: pig meat, sow meat, meats
 frankfurter: frankfurter sausage, wiener, meats
@@ -217,4 +217,4 @@ artif. sweetener: artificial sweetener, sugar substitute, misc
 instant food products: instant meals, ready-to-eat meals, misc
 bulgur wheat: cracked wheat, bulgur, misc
 quinoa pasta: gluten-free pasta, quinoa noodles, misc
-gnocchi: potato dumplings, Italian dumplings, pasta
+gnocchi: potato dumplings, italian dumplings, pasta
